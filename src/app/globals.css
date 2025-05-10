@@ -114,7 +114,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -123,14 +123,14 @@
     font-family: var(--font-roboto-mono), var(--font-geist-mono), ui-monospace,
       monospace;
   }
-  *:lang(am) {
-    font-family: "Entoto";
-  }
   *:lang(en) {
     font-family: var(--font-roboto-mono), var(--font-geist-mono), ui-monospace,
       monospace;
   }
-
+  *:lang(am) {
+    font-family: var(--font-roboto-mono), var(--font-entoto), system-ui,
+      sans-serif;
+  }
   @font-face {
     font-family: "System Font";
     src: local("Entoto");
@@ -151,5 +151,14 @@
 }
 
 .amharic-text {
-  font-family: "Entoto";
+  font-family: "Entoto", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

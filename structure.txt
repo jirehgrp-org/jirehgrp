@@ -3,13 +3,22 @@ jirehgrp
 ├── node_modules/
 ├── public/
 │   ├── fonts/
-│   │   └── entoto.ttf
+│   │   ├── entoto.ttf
+│   │   └── fantuwua.ttf
 │   ├── images/
-│   │   └── previewImage.png
+│   │   └── og-image.png
 │   └── favicon.ico
 │
 ├── src/
 │   ├── app/
+│   │   ├── legal/
+│   │   │   ├── privacy/
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── terms/
+│   │   │   │    ├── layout.tsx
+│   │   │   │    └── page.tsx
+│   │   │   └── layout.tsx
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
@@ -17,13 +26,20 @@ jirehgrp
 │   │
 │   ├── components/
 │   │   ├── common/
+│   │   │   ├── Footer.tsx
+│   │   │   ├── GlobeVisualization.tsx
 │   │   │   ├── Header.tsx
 │   │   │   ├── LanguageToggle.tsx
+│   │   │   ├── NavBar.tsx
 │   │   │   └── ThemeToggle.tsx
 │   │   │
 │   │   ├── context/
 │   │   │   ├── LanguageContext.tsx
 │   │   │   └── ThemeContext.tsx
+│   │   │
+│   │   ├── legal/
+│   │   │   ├── Privacy.tsx
+│   │   │   └── Terms.tsx
 │   │   │
 │   │   └── ui/
 │   │       ├── aceternity/
@@ -32,35 +48,22 @@ jirehgrp
 │   │       │   └── custom uis ...
 │   │       └── other shadcn/uis ...
 │   │   
-│   ├── constants/
-│   │   ├── features/
-│   │   │   └── dashboard.ts
-│   │   └── shared/
-│   │       └── roleConstants.ts
+│   ├── data/
+│   │   └── globe.json
 │   │   
 │   ├── hooks/
 │   │   ├── features/
 │   │   └── shared/
+│   │       └── useCalendar.ts
 │   │   
 │   ├── lib/
-│   │   ├── schemas/
-│   │   ├── services/
 │   │   └── utils.ts
 │   │   
-│   ├── translations/
-│   │   ├── am.ts
-│   │   ├── en.ts
-│   │   ├── or.ts
-│   │   └── index.ts
-│   │   
-│   ├── types/
-│   │   ├── features/
-│   │   └── shared/
-│   │
-│   └── middleware.ts
+│   └── translations/
+│       ├── am.ts
+│       ├── en.ts
+│       └── index.ts
 │
-│
-├── .env
 ├── .gitignore
 ├── components.json
 ├── eslint.config.mjs
@@ -69,5 +72,6 @@ jirehgrp
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.ts
-├── tailwind.config.ts
+├── README.md
+├── structure.txt
 └── tsconfig.json
