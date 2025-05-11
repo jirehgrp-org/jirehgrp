@@ -7,8 +7,9 @@ import { translations } from "@/translations";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Cloud, Layout, Settings, Box, Sparkles, Search, Lock } from "lucide-react";
+import { Settings, Box, Sparkles, Search, Lock } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/aceternity/glowing-effect";
+import { StickyScroll } from "@/components/ui/aceternity/sticky-scroll-reveal";
 import { useLanguage } from "@/components/context/LanguageContext";
 import GlobeVisualization from "@/components/common/GlobeVisualization";
 
@@ -19,7 +20,7 @@ interface GridItemProps {
   description: React.ReactNode;
 }
 
-export function GlowingEffectDemo() {
+const GlowingEffectGrid: React.FC = () => {
   return (
     <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
       <GridItem
@@ -91,6 +92,49 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
   );
 };
 
+const content = [
+  {
+    title: "Collaborative Editing",
+    description:
+      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
+        Collaborative Editing
+      </div>
+    ),
+  },
+  {
+    title: "Real time changes",
+    description:
+      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
+        Version control
+      </div>
+    ),
+  },
+  {
+    title: "Version control",
+    description:
+      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
+        Version control
+      </div>
+    ),
+  },
+  {
+    title: "Running out of content",
+    description:
+      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
+        Running out of content
+      </div>
+    ),
+  },
+];
+
 export default function HomePage() {
   const { language } = useLanguage();
   const t = translations[language].root.home;
@@ -138,30 +182,13 @@ export default function HomePage() {
         </section>
 
         <section className="py-10 px-4">
-          <GlowingEffectDemo />
+          <GlowingEffectGrid />
         </section>
-
 
         {/* CTA Section */}
         <section className="py-24 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Ready to Transform Your Business?
-              </h2>
-              <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-12">
-                Join leading companies using JirehGroup&apos;s solutions to
-                drive their success
-              </p>
-              <button className="group bg-foreground text-background px-8 py-4 rounded-lg font-medium hover:bg-foreground/90 transition-all flex items-center gap-2 mx-auto">
-                Schedule a Consultation
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
+          <div className="w-full py-4">
+            <StickyScroll content={content} />
           </div>
         </section>
       </main>

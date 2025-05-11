@@ -2,7 +2,7 @@
 
 "use client";
 import React from "react";
-import Navigation from "./NavBar";
+import Navigation from "./Navigation";
 const Header: React.FC = () => {
   return (
     <>

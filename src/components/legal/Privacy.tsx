@@ -3,9 +3,10 @@
 "use client";
 import React from "react";
 import { translations } from "@/translations";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { TracingBeam } from "../ui/aceternity/tracing-beam";
 import { useLanguage } from "@/components/context/LanguageContext";
 
 export function PrivacyPolicy() {
@@ -14,233 +15,121 @@ export function PrivacyPolicy() {
 
   return (
     <>
-      <Header />
       <div className="max-w-4xl mx-auto mt-12 p-4">
+      <Header />
         <Card className="p-6">
           <CardContent>
+            <TracingBeam className="px-6">
             <div className="max-w-4xl mx-auto mt-12 p-4">
               <h1 className="font-bold text-2xl text-foreground mb-4">
-                {t.termsAndCondition}
+                {t.privacyPolicy}
               </h1>
               <p className="text-foreground/70 mb-2">{t.effectiveDate}</p>
-              <p className="text-foreground/70 mb-8">{t.welcome}</p>
+              <p className="text-foreground/70 mb-8">{t.lastUpdated}</p>
+              <p className="text-foreground/70 mb-8">{t.intro}</p>
 
-              {/* Definitions */}
+              {/* Section 1: Information We Collect */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.definitions.title}
-                </h2>
-                <ul className="space-y-4">
-                  <li className="text-foreground/70">{t.definitions.client}</li>
-                  <li className="text-foreground/70">
-                    {t.definitions.confidentialInfo}
-                  </li>
-                  <li className="text-foreground/70">
-                    {t.definitions.services}
-                  </li>
-                  <li className="text-foreground/70">
-                    {t.definitions.forceMajeure}
-                  </li>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.informationCollected.title}</h2>
+                <h3 className="font-medium text-lg mb-2 text-foreground">{t.informationCollected.personal.title}</h3>
+                <ul className="list-disc pl-6 mb-4 space-y-2">
+                  {t.informationCollected.personal.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
+                  ))}
                 </ul>
-              </section>
-
-              {/* Scope */}
-              <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.scope.title}
-                </h2>
-                <p className="text-foreground/70">{t.scope.content}</p>
-              </section>
-
-              {/* User Obligations */}
-              <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.userObligations.title}
-                </h2>
-                <p className="text-foreground">{t.userObligations.intro}</p>
+                <h3 className="font-medium text-lg mb-2 text-foreground">{t.informationCollected.technical.title}</h3>
+                <ul className="list-disc pl-6 mb-4 space-y-2">
+                  {t.informationCollected.technical.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
+                  ))}
+                </ul>
+                <h3 className="font-medium text-lg mb-2 text-foreground">{t.informationCollected.transactional.title}</h3>
                 <ul className="list-disc pl-6 space-y-2">
-                  {t.userObligations.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                  {t.informationCollected.transactional.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Intellectual Property */}
+              {/* Section 2: Use of Information */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.intellectualProperty.title}
-                </h2>
-                <div className="space-y-4">
-                  <p className="text-foreground/70">
-                    {t.intellectualProperty.ownership}
-                  </p>
-                  <p className="text-foreground/70">
-                    {t.intellectualProperty.licensing}
-                  </p>
-                  <p className="text-foreground/70">
-                    {t.intellectualProperty.restrictions}
-                  </p>
-                  <p className="text-foreground/70">
-                    {t.intellectualProperty.violation}
-                  </p>
-                </div>
-              </section>
-
-              {/* Payment Terms */}
-              <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.paymentTerms.title}
-                </h2>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.useOfInformation.title}</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  {t.paymentTerms.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                  {t.useOfInformation.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Limitation of Liability */}
+              {/* Section 3: Data Sharing */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.limitationOfLiability.title}
-                </h2>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.dataSharing.title}</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  {t.limitationOfLiability.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                  {t.dataSharing.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Warranties */}
+              {/* Section 4: Security */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.warranties.title}
-                </h2>
-                <p className="text-foreground">{t.warranties.intro}</p>
-                <ul className="list-disc pl-6 space-y-2 mb-4">
-                  {t.warranties.warrants.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <h3 className="font-medium text-lg mb-2 text-foreground">
-                  {t.warranties.exclusions.title}
-                </h3>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.storageSecurity.title}</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  {t.warranties.exclusions.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                  {t.storageSecurity.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Termination */}
+              {/* Section 5: Transfers */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.termination.title}
-                </h2>
-                <p className="text-foreground">{t.termination.forCause}</p>
-                <p className="text-foreground">
-                  {t.termination.forConvenience}
-                </p>
-                <div className="mb-4">
-                  <p className="text-foreground/70 mb-2">
-                    {t.termination.uponTermination.intro}
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    {t.termination.uponTermination.list.map((item, index) => (
-                      <li key={index} className="text-foreground/70">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="text-foreground/70">{t.termination.fees}</p>
-              </section>
-
-              {/* Compliance with Laws */}
-              <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.complianceWithLaws.title}
-                </h2>
-                <p className="text-foreground">
-                  {t.complianceWithLaws.adherence.intro}
-                </p>
-                <ul className="list-disc pl-6 space-y-2 mb-4">
-                  {t.complianceWithLaws.adherence.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-foreground/70">
-                  {t.complianceWithLaws.clientCompliance}
-                </p>
-              </section>
-
-              {/* Data Protection */}
-              <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.dataProtection.title}
-                </h2>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.dataTransfers.title}</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  {t.dataProtection.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                  {t.dataTransfers.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Dispute Resolution */}
+              {/* Section 6: Rights */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.disputeResolution.title}
-                </h2>
-                <ul className="list-disc pl-6 space-y-2">
-                  {t.disputeResolution.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.userRights.title}</h2>
+                <ul className="list-disc pl-6 mb-4 space-y-2">
+                  {t.userRights.list.map((item, index) => (
+                    <li key={index} className="text-foreground/70">{item}</li>
                   ))}
                 </ul>
+                <p className="text-foreground/70">{t.userRights.contactNote}</p>
               </section>
 
-              {/* Governing Law */}
+              {/* Section 7: Cookies */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.governingLaw.title}
-                </h2>
-                <p className="text-foreground/70">{t.governingLaw.content}</p>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.cookies.title}</h2>
+                <p className="text-foreground/70">{t.cookies.content}</p>
               </section>
 
-              {/* Modifications */}
+              {/* Section 8: Retention */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.modifications.title}
-                </h2>
-                <ul className="list-disc pl-6 space-y-2">
-                  {t.modifications.list.map((item, index) => (
-                    <li key={index} className="text-foreground/70">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.dataRetention.title}</h2>
+                <p className="text-foreground/70">{t.dataRetention.content}</p>
               </section>
 
-              {/* Contact Section */}
+              {/* Section 9: Minors */}
               <section className="mb-8">
-                <h2 className="font-semibold text-xl mb-4 text-foreground">
-                  {t.contact.title}
-                </h2>
-                <p className="text-foreground">{t.contact.intro}</p>
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.minors.title}</h2>
+                <p className="text-foreground/70">{t.minors.content}</p>
+              </section>
+
+              {/* Section 10: Changes */}
+              <section className="mb-8">
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.changes.title}</h2>
+                <p className="text-foreground/70">{t.changes.content}</p>
+              </section>
+
+              {/* Section 11: Contact */}
+              <section className="mb-8">
+                <h2 className="font-semibold text-xl mb-4 text-foreground">{t.contact.title}</h2>
+                <p className="text-foreground/70 mb-2">{t.contact.content}</p>
                 <div className="space-y-2">
                   <p className="text-foreground/70">{t.contact.email}</p>
                   <p className="text-foreground/70">{t.contact.phone}</p>
@@ -256,6 +145,7 @@ export function PrivacyPolicy() {
                 </p>
               </footer>
             </div>
+            </TracingBeam>
           </CardContent>
         </Card>
         <Footer />
