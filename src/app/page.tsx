@@ -3,10 +3,11 @@
 
 "use client";
 import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { translations } from "@/translations";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import { motion } from "framer-motion";
 import { Settings, Box, Sparkles, Search, Lock } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/aceternity/glowing-effect";
 import { StickyScroll } from "@/components/ui/aceternity/sticky-scroll-reveal";
@@ -94,42 +95,66 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
 
 const content = [
   {
-    title: "Collaborative Editing",
+    title: "Custom Websites",
     description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      "From simple landing pages to complex web platforms, we design and build websites tailored to your business needs, ensuring speed, accessibility, and a polished user experience. We use the latest tech stack available to deliver modern, scalable, and future-proof solutions.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Collaborative Editing
+        <Image
+          src="/images/council.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
       </div>
     ),
   },
   {
-    title: "Real time changes",
+    title: "Business Dashboards",
     description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+      "Turn your data into actionable insights. We build interactive dashboards that help teams monitor performance, visualize KPIs, and make smarter decisions—fast. Manage everything that runs in and around your business with centralized control and clarity.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        Version control
+        <Image
+          src="/images/dashboard.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
       </div>
     ),
   },
   {
-    title: "Version control",
+    title: "Open Source Contributions",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "We believe in building in the open. From internal tools to community-driven libraries, we regularly contribute to and maintain open source software that empowers developers.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        Version control
+        <Image
+          src="/images/.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
       </div>
     ),
   },
   {
-    title: "Running out of content",
+    title: "AI Research & Prototyping",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Exploring the future of technology through experimentation. We prototype AI tools, research machine learning techniques, and apply them to solve real-world problems creatively.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Running out of content
+        <Image
+          src="/images/og-image.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
       </div>
     ),
   },
@@ -155,13 +180,14 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-left">
-                  <span className="text-[#F76F53]">JirehGroup</span>
-                  <span className="text-foreground"> Technologies</span>
+                  <span className="italic font-serif text-[#F76F53] text-6xl">JirehGroup</span>
+                  {" "}
+                  <span className="text-foreground">Technologies</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-foreground/80 max-w-2xl mb-12 text-left">
+                {/* <p className="text-xl md:text-2xl text-foreground/80 max-w-2xl mb-12 text-left">
                   Building tomorrow&apos;s digital infrastructure today.
                   Enterprise solutions that evolve with your business.
-                </p>
+                </p> */}
               </motion.div>
 
               {/* Globe Visualization */}

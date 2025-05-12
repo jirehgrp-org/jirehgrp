@@ -25,9 +25,8 @@ const Navigation = () => {
   const t = translations[language].common.navbar;
 
   const navItems = [
-    { name: t.home, link: "/" },
-    { name: t.services, link: "/services" },
     { name: t.products, link: "/Products" },
+    { name: t.services, link: "/services" },
     { name: t.contact, link: "/contact" },
   ];
 
@@ -74,10 +73,11 @@ const Navigation = () => {
                 <span className="block">{item.name}</span>
               </Link>
             ))}
-            <div className="flex justify-between px-2 mt-4">
+            <div className="flex items-center gap-4 px-2 mt-4 justify-center">
               <ThemeToggle />
               <LanguageToggle />
             </div>
+
           </MobileNavMenu>
 
         </MobileNav>

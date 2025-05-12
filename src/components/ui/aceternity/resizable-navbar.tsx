@@ -196,29 +196,21 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
+  // onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
           className={cn(
-            "fixed inset-0 z-[9999] flex min-h-screen w-screen flex-col items-center justify-center gap-6 bg-background p-6 text-center dark:bg-background",
+            "absolute top-full left-0 right-0 z-50 bg-background dark:bg-background px-4 py-4 shadow-md border-t border-neutral-300 dark:border-neutral-700",
             className
           )}
         >
-          <div className="lg:hidden absolute top-4 right-4">
-            <button
-              onClick={onClose}
-              className="text-xl text-neutral-600 dark:text-neutral-300"
-            >
-              <IconX />
-            </button>
-          </div>
-          {children}
+          <div className="flex flex-col gap-4">{children}</div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -246,7 +238,7 @@ export const NavbarLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <Image
-        src="https://assets.aceternity.com/logo-dark.png"
+        src="/images/logo.png"
         alt="logo"
         width={30}
         height={30}
