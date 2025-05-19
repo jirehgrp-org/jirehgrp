@@ -44,8 +44,15 @@ export const metadata: Metadata = {
   publisher: "JirehGroup",
   keywords: [
     "JirehGroup",
+    "JirehGroup Ethiopia",
+    "JirehGrp",
+    "JirehGrp Ethiopia",
     "Jireh Group",
+    "Jireh Group Ethiopia",
+    "Jireh Grp",
+    "Jireh Grp Ethiopia",
     "jireh group",
+    "jireh grp",
     "software development",
     "AI solutions",
     "technology services",
@@ -82,6 +89,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="description" content="JirehGroup drives innovation through expert software development, cutting-edge AI solutions, and research." />
+        <meta name="keywords" content="JirehGroup, Jireh Group, JirehGrp, software development, AI, Ethiopia, open-source, innovation" />
+        <link rel="canonical" href="https://jirehgrp.com" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "JirehGroup",
+            "url": "https://jirehgrp.com",
+            "logo": "https://jirehgrp.com/logo.png",
+            "sameAs": [
+              "https://www.linkedin.com/company/jirehgrp",
+              "https://twitter.com/jirehgrp"
+            ],
+            "description": "JirehGroup is a tech firm focused on AI, software, and research innovation based in Ethiopia.",
+          })}
+        </script>
         <script
           dangerouslySetInnerHTML={{
             __html: `

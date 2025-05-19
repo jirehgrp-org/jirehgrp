@@ -5,8 +5,8 @@ export const am = {
     back: "ተመለስ",
     navbar: {
       home: "Home",
-      about: "About",
       services: "Services",
+      tools: "Tools",
       products: "Products",
       contact: "Contact",
     },

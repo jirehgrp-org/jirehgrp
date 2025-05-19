@@ -27,6 +27,7 @@ const Navigation = () => {
   const navItems = [
     { name: t.products, link: "/Products" },
     { name: t.services, link: "/services" },
+    { name: t.tools, link: "/tools" },
     { name: t.contact, link: "/contact" },
   ];
 
