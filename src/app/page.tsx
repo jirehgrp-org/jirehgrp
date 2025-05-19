@@ -180,14 +180,14 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-left">
-                  <span className="italic font-serif text-[#F76F53] text-6xl">JirehGroup</span>
-                  {" "}
-                  <span className="text-foreground">Technologies</span>
+                  <span className="italic font-serif text-[#F76F53] text-6xl">JirehGroup</span>{" "}
+                  <span className="text-foreground">– Software, AI, and Innovation in Ethiopia</span>
                 </h1>
-                {/* <p className="text-xl md:text-2xl text-foreground/80 max-w-2xl mb-12 text-left">
-                  Building tomorrow&apos;s digital infrastructure today.
-                  Enterprise solutions that evolve with your business.
-                </p> */}
+
+                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 text-left">
+                  JirehGroup is an Ethiopian tech company delivering world-class software development, AI solutions, and open-source research. We help organizations innovate with tailored digital systems and scalable platforms.
+                </p>
+
               </motion.div>
 
               {/* Globe Visualization */}

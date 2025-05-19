@@ -5,8 +5,8 @@ export const en = {
     back: "Back",
     navbar: {
       home: "Home",
-      about: "About",
       services: "Services",
+      tools: "Tools",
       products: "Products",
       contact: "Contact",
     },
