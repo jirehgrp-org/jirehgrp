@@ -25,7 +25,7 @@ const Navigation = () => {
   const t = translations[language].common.navbar;
 
   const navItems = [
-    { name: t.products, link: "/Products" },
+    { name: t.products, link: "/products" },
     { name: t.services, link: "/services" },
     { name: t.tools, link: "/tools" },
     { name: t.contact, link: "/contact" },

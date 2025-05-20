@@ -1,12 +1,12 @@
-// @/app/tools/layout.tsx
+// @/app/services/layout.tsx
 
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tools',
+  title: 'Services',
 };
 
-export default function ToolsLayout({
+export default function servicesLayout({
   children,
 }: {
   children: React.ReactNode;
