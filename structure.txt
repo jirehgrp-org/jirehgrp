@@ -19,6 +19,12 @@ jirehgrp
 │   │   │   │    ├── layout.tsx
 │   │   │   │    └── page.tsx
 │   │   │   └── layout.tsx
+│   │   ├── products/
+│   │   ├── services/
+│   │   ├── tools/
+│   │   │   ├── ocr/
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
