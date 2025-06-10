@@ -50,9 +50,9 @@ This project is actively maintained by the internal team. Any changes or updates
 ```
 
 ## About the Creators
-### Made with ❤️ by the JirehGroup Team
+#### Made with ❤️ by the JirehGroup Team
 
 We’re passionate about collaboration, open-source, and meaningful tech impact.
 
 - Visit us: [jirehgrp.com](https://www.jirehgrp.com)
-- Follow us on GitHub: [@JirehGroup](https://github.com/jirehgrp-org)
+- Follow us on GitHub: [@jirehgrp-org](https://github.com/jirehgrp-org)
