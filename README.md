@@ -6,13 +6,13 @@ This is the internal codebase for JirehGroup’s corporate website. Built with a
 
 ---
 
-## 🧭 About JirehGroup
+## About JirehGroup
 
 JirehGroup drives innovation through expert software development, cutting-edge AI solutions, research initiatives, and a wide range of technology services. The website reflects our capabilities, offerings, and commitment to quality and creativity.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Next.js** – React framework for server-rendered and statically generated applications  
 - **React Hooks** – For managing state and component lifecycle in a clean, functional style  
@@ -23,7 +23,7 @@ JirehGroup drives innovation through expert software development, cutting-edge A
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```bash
 /app            # Application routing and page-level logic  
@@ -47,3 +47,12 @@ This project is actively maintained by the internal team. Any changes or updates
 - For internal development only  
 - Not intended for external contributions  
 - All code and assets are proprietary to **JirehGroup**
+```
+
+## About the Creators
+### Made with ❤️ by the JirehGroup Team
+
+We’re passionate about collaboration, open-source, and meaningful tech impact.
+
+- Visit us: [jirehgrp.com](https://www.jirehgrp.com)
+- Follow us on GitHub: [@JirehGroup](https://github.com/jirehgrp-org)
