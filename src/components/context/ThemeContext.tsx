@@ -1,30 +1,42 @@
 // @/components/common/ThemeContext.tsx
 
 "use client";
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useTheme as useNextTheme } from "next-themes";
 
-export function ThemeContext() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
+type ThemeContextType = {
+  theme: string | undefined;
+  isDark: boolean;
+  toggleTheme: () => void;
+};
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-  if (!mounted) {
-    return null;
-  }
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const { resolvedTheme, setTheme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const toggleTheme = () => setTheme(resolvedTheme === "dark" ? "light" : "dark");
+
+  if (!mounted) return null;
 
   return (
-    <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="rounded-md p-2 hover:bg-accent transition-colors"
+    <ThemeContext.Provider
+      value={{
+        theme: resolvedTheme,
+        isDark: resolvedTheme === "dark",
+        toggleTheme,
+      }}
     >
-      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </button>
+      {children}
+    </ThemeContext.Provider>
   );
+}
+
+export function useThemeContext() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useThemeContext must be used within ThemeProvider");
+  return ctx;
 }

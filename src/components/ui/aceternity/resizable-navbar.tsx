@@ -73,9 +73,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible }
-            )
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible }
+          )
           : child
       )}
     </motion.div>
@@ -102,9 +102,9 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-md bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start px-4 py-2 lg:flex overflow-visible",
         visible &&
-          "bg-[#F5E3CD] dark:bg-[#151515] border-2 border-[#151515] dark:border-[#F5E3CD]",
+        "bg-[#F5E3CD] dark:bg-[#151515] border-2 border-[#151515] dark:border-[#F5E3CD]",
         className
       )}
     >
@@ -167,7 +167,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
         visible &&
-          "bg-[#F5E3CD] dark:bg-[#151515] border-2 border-[#151515] dark:border-[#F5E3CD]",
+        "bg-[#F5E3CD] dark:bg-[#151515] border-2 border-[#151515] dark:border-[#F5E3CD]",
         className
       )}
     >
@@ -250,13 +250,13 @@ export const NavbarLogo = () => {
 
 type NavbarButtonProps =
   | (React.ComponentPropsWithoutRef<"a"> & {
-      as?: "a";
-      href: string;
-    })
+    as?: "a";
+    href: string;
+  })
   | (React.ComponentPropsWithoutRef<"button"> & {
-      as?: "button";
-      href?: never;
-    });
+    as?: "button";
+    href?: never;
+  });
 
 export const NavbarButton = ({
   as: Tag = "a",

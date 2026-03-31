@@ -23,7 +23,7 @@ interface GridItemProps {
 
 const GlowingEffectGrid: React.FC = () => {
   return (
-    <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+    <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-136 xl:grid-rows-2">
       <GridItem
         area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
         icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
@@ -64,7 +64,7 @@ const GlowingEffectGrid: React.FC = () => {
 
 const GridItem = ({ area, icon, title, description }: GridItemProps) => {
   return (
-    <li className={`min-h-[14rem] list-none ${area}`}>
+    <li className={`min-h-56 list-none ${area}`}>
       <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
         <GlowingEffect
           spread={40}
@@ -169,7 +169,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section with Globe */}
-      <main className="flex-grow">
+      <main className="grow">
         <section className="relative min-h-screen mb-20 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-start lg:items-center">
@@ -180,7 +180,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-left">
-                  <span className="italic font-serif text-[#F76F53] text-6xl">JirehGroup</span>{" "}
+                  <span className="italic font-serif text-[#4169E2] text-6xl">Jirehgrp</span>{" "}
                   <span className="text-foreground">– Software, AI, and Innovation in Ethiopia</span>
                 </h1>
 
