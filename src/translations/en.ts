@@ -13,7 +13,7 @@ export const en = {
     footer: {
       company: "Company",
       about: "About",
-      description: "Welcome to JirehGroup Website",
+      description: "Welcome to Jirehgrp Website",
       rights: "All Rights Reserved",
       careers: "Careers",
       contact: "Contact",
@@ -29,7 +29,7 @@ export const en = {
         modern: "Modern",
         dashboard: "Dashboard",
         forYourBusinessFrom: "For Your Business From",
-        jirehGroup: "JirehGroup",
+        jirehgrp: "Jirehgrp",
       },
       welcome: "Welcome to Jireh Dashboard",
       getStarted: "Get Started",

@@ -3,16 +3,15 @@
 // @/components/common/GlobeVisualization.tsx
 
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Color, Scene, Fog, PerspectiveCamera, Vector3, Group } from "three";
+import { Color, Scene, Fog, Vector3, Group } from "three";
 import ThreeGlobe from "three-globe";
 import { useFrame, Canvas, extend, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useTheme } from "next-themes";
 import countries from "@/data/globe.json";
 import { useLanguage } from "@/components/context/LanguageContext";
-import { defaultConfig } from "next/dist/server/config-shared";
 
 // Extend Three-Globe for Fiber
 extend({ ThreeGlobe });
@@ -111,21 +110,23 @@ const getDefaultConfig = (theme: string | undefined) => {
 
 
 // Custom Controls component to set initial position facing Africa
-const CustomControls = () => {
+const CustomControls = ({
+  config,
+}: {
+  config: ReturnType<typeof getDefaultConfig>;
+}) => {
   const { camera, gl } = useThree();
   const controlsRef = useRef<any>(null);
-  const [initialized, setInitialized] = useState(false);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    if (controlsRef.current && !initialized) {
+    if (controlsRef.current && !initializedRef.current) {
       camera.position.set(100, 200, 300);
       controlsRef.current.target = new Vector3(0, 0, 0);
-
-      // Update controls to apply the new position
       controlsRef.current.update();
-      setInitialized(true);
+      initializedRef.current = true;
     }
-  }, [camera, initialized]);
+  }, [camera]);
 
   return (
     <OrbitControls
@@ -136,8 +137,8 @@ const CustomControls = () => {
       enableZoom={false}
       minDistance={300}
       maxDistance={300}
-      autoRotate={defaultConfig.autoRotate}
-      autoRotateSpeed={defaultConfig.autoRotateSpeed}
+      autoRotate={config.autoRotate}
+      autoRotateSpeed={config.autoRotateSpeed}
       minPolarAngle={Math.PI / 3.5}
       maxPolarAngle={Math.PI - Math.PI / 3}
     />
@@ -263,14 +264,7 @@ const GlobeVisualization = () => {
         <Canvas
           key={`globe-canvas-${language}-${resolvedTheme}`}
           scene={scene}
-          camera={
-            new PerspectiveCamera(
-              50,
-              window.innerWidth / window.innerHeight,
-              180,
-              1800
-            )
-          }
+          camera={{ fov: 50, near: 180, far: 1800, position: [0, 0, 300] }}
           className="w-full h-full"
         >
           <ambientLight color={config.ambientLight} intensity={0.6} />
@@ -278,7 +272,7 @@ const GlobeVisualization = () => {
           <pointLight color={config.pointLight} position={new Vector3(-200, 500, 200)} intensity={0.8} />
 
           <Globe config={config} />
-          <CustomControls />
+          <CustomControls config={config} />
         </Canvas>
       </motion.div>
     </div>

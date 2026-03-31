@@ -29,7 +29,7 @@ export const am = {
         modern: "ዘመናዊ",
         dashboard: "ሰሌዳ",
         forYourBusinessFrom: "ለእርስዎ ስራዎች ከ",
-        jirehGroup: "ጃይረ",
+        jirehgrp: "ጃይረ",
       },
       welcome: "እንኳን ወደ ጃይረ ገፅ መጣችሁ",
       getStarted: "ይጀመሩ",
