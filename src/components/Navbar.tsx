@@ -1,9 +1,6 @@
 // @/components/Navbar.tsx
 
-// @/components/Navbar.tsx
-
 "use client";
-
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -20,6 +17,14 @@ export default function Navbar() {
     };
   }, [open]);
 
+  const navItems = [
+    { href: "#home", label: "/home" },
+    { href: "#solutions", label: "/solutions" },
+    { href: "#industries", label: "/industries" },
+    { href: "#about", label: "/about" },
+    { href: "#contact", label: "/contact" },
+  ];
+
   return (
     <>
       <nav className="site-nav">
@@ -27,12 +32,12 @@ export default function Navbar() {
           JIREHGRP //
         </a>
 
-        {/* desktop nav */}
         <div className="nav-links">
-          <a href="#home">/home</a>
-          <a href="#about">/about</a>
-          <a href="#services">/services</a>
-          <a href="#contact">/contact</a>
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
 
           <div className="toggle-row">
             <ThemeToggle />
@@ -40,7 +45,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* mobile hamburger */}
         <button
           type="button"
           className={`menu-toggle ${open ? "is-open" : ""}`}
@@ -54,7 +58,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* mobile fullscreen menu */}
       <div className={`menu-overlay ${open ? "menu-overlay-open" : ""}`}>
         <div className="menu-overlay-header">
           <a href="#home" className="logo" onClick={closeMenu}>
@@ -72,18 +75,11 @@ export default function Navbar() {
         </div>
 
         <div id="mobile-menu" className="menu-overlay-content">
-          <a href="#home" onClick={closeMenu}>
-            /home
-          </a>
-          <a href="#about" onClick={closeMenu}>
-            /about
-          </a>
-          <a href="#services" onClick={closeMenu}>
-            /services
-          </a>
-          <a href="#contact" onClick={closeMenu}>
-            /contact
-          </a>
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} onClick={closeMenu}>
+              {item.label}
+            </a>
+          ))}
 
           <div className="menu-overlay-toggles">
             <ThemeToggle />

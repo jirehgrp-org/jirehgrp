@@ -1,6 +1,7 @@
 // @/components/sections/Contact.tsx
 
 "use client";
+
 import { useState } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -41,10 +42,16 @@ export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <h1 className="hero-title">
-        Start The
+        Let’s Build The
         <br />
-        Conversation.
+        Right System.
       </h1>
+
+      <p className="hero-sub">
+        Tell us about your business, your operational challenges, or the system
+        you need. Whether you are exploring ERP, automation, internal tools, or
+        a custom digital platform, we’ll help you identify the right next step.
+      </p>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <div className="form-grid">
@@ -64,16 +71,27 @@ export default function Contact() {
           />
         </div>
 
+        <select
+          name="department"
+          defaultValue="general"
+          className="form-input"
+          aria-label="Department"
+        >
+          <option value="general">GENERAL INQUIRY</option>
+          <option value="sales">SALES / PROPOSAL</option>
+          <option value="support">SUPPORT</option>
+        </select>
+
         <input
           name="subject"
-          placeholder="PROJECT SUBJECT"
+          placeholder="PROJECT SUBJECT / BUSINESS NEED"
           required
           className="form-input"
         />
 
         <textarea
           name="message"
-          placeholder="TELL US WHAT YOU NEED..."
+          placeholder="TELL US ABOUT YOUR BUSINESS, CURRENT CHALLENGES, OR THE SYSTEM YOU WANT TO BUILD..."
           required
           className="form-textarea"
         />
@@ -82,10 +100,10 @@ export default function Contact() {
           {status === "sending"
             ? "SENDING..."
             : status === "sent"
-              ? "SENT ✓"
+              ? "MESSAGE SENT ✓"
               : status === "error"
                 ? "TRY AGAIN"
-                : "SEND MESSAGE"}
+                : "REQUEST CONSULTATION"}
         </button>
       </form>
 
@@ -102,7 +120,7 @@ export default function Contact() {
       </div>
 
       <div className="contact-footer">
-        <span>READY_FOR_NEW_PROJECTS</span>
+        <span>READY_FOR_NEW_PROJECTS // CONSULTATIONS</span>
         <span>© 2026 JIREHGRP</span>
       </div>
     </section>

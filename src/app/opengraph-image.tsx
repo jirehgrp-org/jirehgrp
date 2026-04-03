@@ -44,10 +44,10 @@ export default function OpenGraphImage() {
             position: "absolute",
             inset: "24px",
             border: "1px solid rgba(26,24,22,0.10)",
-            display: "flex",
           }}
         />
 
+        {/* Top */}
         <div
           style={{
             position: "relative",
@@ -58,7 +58,6 @@ export default function OpenGraphImage() {
         >
           <div
             style={{
-              display: "flex",
               fontSize: 28,
               letterSpacing: 2,
               textTransform: "uppercase",
@@ -69,7 +68,6 @@ export default function OpenGraphImage() {
 
           <div
             style={{
-              display: "flex",
               fontSize: 18,
               padding: "10px 18px",
               borderRadius: 999,
@@ -79,10 +77,11 @@ export default function OpenGraphImage() {
               letterSpacing: 1,
             }}
           >
-            Custom digital systems
+            Enterprise Systems
           </div>
         </div>
 
+        {/* Main */}
         <div
           style={{
             position: "relative",
@@ -94,8 +93,6 @@ export default function OpenGraphImage() {
         >
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
               fontSize: 84,
               fontWeight: 800,
               lineHeight: 0.95,
@@ -103,24 +100,25 @@ export default function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            <span>Custom Websites.</span>
-            <span>Apps. ERP. Software.</span>
+            <span>ERP Systems.</span>
+            <span>Business Software.</span>
+            <span>Digital Platforms.</span>
           </div>
 
           <div
             style={{
-              display: "flex",
               fontSize: 28,
               lineHeight: 1.45,
               color: "rgba(26,24,22,0.72)",
               maxWidth: 900,
             }}
           >
-            Jirehgrp builds modern websites, business software, ERP systems, and
-            custom digital products for ambitious businesses.
+            Jirehgrp builds enterprise software, ERP solutions, and custom
+            business systems that help companies operate better and scale faster.
           </div>
         </div>
 
+        {/* Bottom */}
         <div
           style={{
             position: "relative",

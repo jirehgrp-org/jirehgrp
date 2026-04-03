@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "Jirehgrp custom websites, software, ERP and apps",
+        alt: "Jirehgrp ERP solutions, business systems, and enterprise software",
       },
     ],
   },
@@ -65,18 +65,22 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/logo.png" }],
   },
 };
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f6efe3" },
     { media: "(prefers-color-scheme: dark)", color: "#050505" },
   ],
-  width: "device-width",
-  initialScale: 1,
 };
 
 export default function RootLayout({

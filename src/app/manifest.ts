@@ -7,17 +7,23 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: siteConfig.name,
+    name: siteConfig.title,
     short_name: siteConfig.name,
     description: siteConfig.description,
     start_url: "/",
+    scope: "/",
     display: "standalone",
     background_color: "#f6efe3",
     theme_color: "#f6efe3",
     icons: [
       {
-        src: "/icon.png",
+        src: "/favicon.ico",
         sizes: "any",
+        type: "image/x-icon",
+      },
+      {
+        src: "/logo.png",
+        sizes: "512x512",
         type: "image/png",
       },
     ],

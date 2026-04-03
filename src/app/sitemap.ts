@@ -16,13 +16,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/#about`,
+      url: `${siteConfig.url}/#solutions`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${siteConfig.url}/#services`,
+      url: `${siteConfig.url}/#industries`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteConfig.url}/#about`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -31,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteConfig.url}/#contact`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 }

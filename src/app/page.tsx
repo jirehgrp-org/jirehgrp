@@ -4,22 +4,24 @@ import type { Metadata } from "next";
 import SentinelCursor from "@/components/SentinelCursor";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
+import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
+import Industries from "@/components/sections/Industries";
+import CTA from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
   description:
-    "Jirehgrp builds custom websites, software, ERP systems, mobile apps, and digital platforms for modern businesses.",
+    "Jirehgrp builds ERP solutions, business software, enterprise systems, and digital platforms for modern businesses.",
   alternates: {
     canonical: siteConfig.url,
   },
   openGraph: {
     title: siteConfig.title,
     description:
-      "Custom websites, business software, ERP systems, mobile apps, and digital platforms for modern businesses.",
+      "ERP solutions, business software, enterprise systems, and digital platforms for growing businesses.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     images: [
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Jirehgrp custom websites, software, ERP and apps",
+        alt: "Jirehgrp ERP solutions, business systems, and digital platforms",
       },
     ],
   },
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description:
-      "Custom websites, business software, ERP systems, mobile apps, and digital platforms for modern businesses.",
+      "ERP solutions, business software, enterprise systems, and digital platforms for growing businesses.",
     images: [`${siteConfig.url}/opengraph-image`],
   },
 };
@@ -49,7 +51,7 @@ export default function HomePage() {
         "@id": `${siteConfig.url}/#organization`,
         name: siteConfig.name,
         url: siteConfig.url,
-        logo: `${siteConfig.url}/icon.png`,
+        logo: `${siteConfig.url}/logo.png`,
         description: siteConfig.description,
       },
       {
@@ -68,18 +70,19 @@ export default function HomePage() {
         name: siteConfig.name,
         url: siteConfig.url,
         description:
-          "Jirehgrp builds custom websites, software, ERP systems, mobile apps, and digital platforms for modern businesses.",
+          "Jirehgrp delivers ERP solutions, business software, enterprise systems, automation, and digital platforms.",
         provider: {
           "@id": `${siteConfig.url}/#organization`,
         },
-        areaServed: "Worldwide",
+        areaServed: ["Ethiopia", "Africa", "Worldwide"],
         serviceType: [
-          "Custom website development",
-          "Software development",
-          "ERP systems",
-          "Mobile app development",
-          "Web application development",
-          "Business software solutions",
+          "ERP solutions",
+          "Business systems development",
+          "Enterprise software development",
+          "Workflow automation",
+          "Dashboard and reporting systems",
+          "Digital platform development",
+          "System integration",
         ],
       },
     ],
@@ -99,8 +102,10 @@ export default function HomePage() {
 
       <main className="snap-wrapper">
         <Hero />
-        <About />
         <Services />
+        <Industries />
+        <About />
+        <CTA />
         <Contact />
       </main>
     </>

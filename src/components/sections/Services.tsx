@@ -2,46 +2,46 @@
 
 const services = [
   {
-    code: "SERVICE_01 // WEB",
-    stack: "UI / UX / DEVELOPMENT",
-    title: "Custom\nWebsites",
-    text: "High-performance websites designed to convert, scale, and represent your brand properly.",
+    code: "SOLUTION_01 // ERP",
+    stack: "CUSTOM / IMPLEMENTATION",
+    title: "ERP\nSolutions",
+    text: "Custom ERP systems designed to unify operations, improve visibility, and support business growth.",
   },
   {
-    code: "SERVICE_02 // SYSTEMS",
-    stack: "ERP / DASHBOARDS",
+    code: "SOLUTION_02 // SYSTEMS",
+    stack: "WORKFLOWS / OPERATIONS",
     title: "Business\nSystems",
-    text: "Internal tools, dashboards, and ERP systems built around your actual workflow.",
+    text: "Internal tools, dashboards, and operational systems built around your real business processes.",
   },
   {
-    code: "SERVICE_03 // PRODUCTS",
-    stack: "WEB / MOBILE",
-    title: "Apps &\nPlatforms",
-    text: "Custom-built platforms and applications for startups and growing businesses.",
+    code: "SOLUTION_03 // AUTOMATION",
+    stack: "INTEGRATIONS / EFFICIENCY",
+    title: "Automation &\nIntegrations",
+    text: "Reduce manual work by connecting systems, automating workflows, and improving process efficiency.",
   },
   {
-    code: "SERVICE_04 // DESIGN",
-    stack: "UX / PRODUCT DESIGN",
-    title: "Product\nDesign",
-    text: "User-focused design systems and interfaces that make complex systems simple to use.",
+    code: "SOLUTION_04 // PLATFORMS",
+    stack: "WEB / MOBILE / PORTALS",
+    title: "Digital\nPlatforms",
+    text: "Custom web platforms, client portals, and business applications built for modern organizations.",
   },
   {
-    code: "SERVICE_05 // AUTOMATION",
-    stack: "WORKFLOWS / INTEGRATIONS",
-    title: "Automation\n& Integrations",
-    text: "Streamline operations by connecting tools, automating processes, and reducing manual work.",
+    code: "SOLUTION_05 // DATA",
+    stack: "REPORTING / ANALYTICS",
+    title: "Dashboards &\nReporting",
+    text: "Real-time reporting and decision-support dashboards that help teams track performance and act faster.",
   },
   {
-    code: "SERVICE_06 // SUPPORT",
-    stack: "SCALING / MAINTENANCE",
-    title: "Scale &\nMaintain",
-    text: "Ongoing improvements, monitoring, and support as your product and business grow.",
+    code: "SOLUTION_06 // CONSULTING",
+    stack: "STRATEGY / TRANSFORMATION",
+    title: "Digital\nTransformation",
+    text: "Technology consulting and system planning to help businesses modernize, scale, and operate better.",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services">
+    <section id="solutions">
       <div className="work-grid">
         {services.map((service) => (
           <article key={service.code} className="project-card">

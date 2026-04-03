@@ -5,43 +5,45 @@ export default function About() {
     <section id="about">
       <div className="about-grid">
         <div className="about-text">
-          <h2>What We Do</h2>
+          <h2>About Jirehgrp</h2>
 
           <p>
-            Jirehgrp is a software and digital solutions company focused on
-            building systems that actually solve business problems — not just
-            look good.
+            Jirehgrp is an enterprise software and digital transformation company
+            focused on building systems that solve real operational problems —
+            not just software that looks impressive on the surface.
           </p>
 
           <p>
-            We work with businesses, startups, and teams that need more than a
-            basic website. Whether it’s an internal dashboard, a full ERP system,
-            or a scalable web platform, we design and build solutions tailored
-            to how your business operates.
+            Based in Addis Ababa, we work with growing businesses, established
+            companies, and ambitious organizations that need more than basic
+            tools. From ERP systems and internal business platforms to
+            automation, dashboards, and digital products, we build solutions
+            around how businesses actually operate.
           </p>
 
           <p>
-            Our focus is simple: performance, clarity, and long-term usability.
-            Every system we build is designed to be maintainable, scalable, and
-            aligned with real workflows — not assumptions.
+            Our approach combines business understanding, technical execution,
+            and long-term thinking. Every system we deliver is built for
+            performance, maintainability, and scale — so it remains useful as
+            your operations grow and evolve.
           </p>
         </div>
 
         <div className="skills-list">
           <span className="skill-tag">
-            01_WE_BUILD: WEBSITES / WEB PLATFORMS
+            01_FOCUS: ERP / BUSINESS SYSTEMS / AUTOMATION
           </span>
           <span className="skill-tag">
-            02_SYSTEMS: ERP / INTERNAL TOOLS / DASHBOARDS
+            02_BUILD: INTERNAL TOOLS / DASHBOARDS / PLATFORMS
           </span>
           <span className="skill-tag">
-            03_PRODUCTS: MOBILE APPS / SAAS SYSTEMS
+            03_APPROACH: ANALYZE → DESIGN → BUILD → SUPPORT
           </span>
           <span className="skill-tag">
-            04_PROCESS: DESIGN → BUILD → SCALE → MAINTAIN
+            04_STANDARD: PERFORMANCE / RELIABILITY / SCALE
           </span>
           <span className="skill-tag">
-            05_FOCUS: PERFORMANCE / CLARITY / REAL USE
+            05_BASE: ADDIS ABABA // AFRICA & BEYOND
           </span>
         </div>
       </div>

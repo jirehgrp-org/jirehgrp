@@ -1,0 +1,39 @@
+jirehgrp/
+├── public/
+│   ├── contact.php
+│   ├── favicon.ico
+│   └── logo.png
+├── src/
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── manifest.ts
+│   │   ├── opengraph-image.tsx
+│   │   ├── page.tsx
+│   │   ├── robots.ts
+│   │   └── sitemap.ts
+│   ├── components/
+│   │   ├── providers/
+│   │   │   └── SitePreferencesProvider.tsx
+│   │   ├── sections/
+│   │   │   ├── About.tsx
+│   │   │   ├── Contact.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   └── Services.tsx
+│   │   ├── LanguageToggle.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── SentinelCursor.tsx
+│   │   └── ThemeToggle.tsx
+│   └── lib/
+│       └── site.ts
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+└── tsconfig.json

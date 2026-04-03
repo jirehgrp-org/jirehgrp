@@ -697,3 +697,26 @@ footer {
 .icon-toggle:hover svg {
   transform: rotate(20deg);
 }
+
+.form-button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* CTA SECTION IMPROVEMENT */
+
+#cta .about-grid {
+  align-items: center;
+}
+
+#cta .skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#cta .form-button {
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
