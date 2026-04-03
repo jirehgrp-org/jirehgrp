@@ -1,11 +1,10 @@
 // @/app/layout.tsx
 
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Mono } from "next/font/google";
-import localFont from "next/font/local";
-import { Providers } from "./providers";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/lib/site";
+import { SitePreferencesProvider } from "@/components/providers/SitePreferencesProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,120 +16,82 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
-});
-
-const entoto = localFont({
-  src: "../../public/fonts/entoto.ttf",
-  variable: "--font-entoto",
-});
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.creator }],
+  creator: siteConfig.creator,
+  publisher: siteConfig.creator,
+  category: "technology",
+  keywords: [...siteConfig.keywords],
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Jirehgrp custom websites, software, ERP and apps",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F2F0E3" },
-    { media: "(prefers-color-scheme: dark)", color: "#1F1F1F" },
+    { media: "(prefers-color-scheme: light)", color: "#f6efe3" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
   ],
-};
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://jirehgrp.com"),
-  title: "JirehGroup — Software, AI, Research, and Innovation",
-  description:
-    "JirehGroup drives innovation through expert software development, cutting-edge AI solutions, in-depth research, and a wide range of technology services. We’re committed to excellence and contribute to the tech community through open-source projects and public resources.",
-  authors: [{ name: "JirehGroup", url: "https://jirehgrp.com" }],
-  creator: "JirehGroup Engineering",
-  publisher: "JirehGroup",
-  keywords: [
-    "JirehGroup",
-    "JirehGroup Ethiopia",
-    "JirehGrp",
-    "JirehGrp Ethiopia",
-    "Jireh Group",
-    "Jireh Group Ethiopia",
-    "Jireh Grp",
-    "Jireh Grp Ethiopia",
-    "jireh group",
-    "jireh grp",
-    "software development",
-    "AI solutions",
-    "technology services",
-    "research",
-    "open source",
-    "Next.js",
-    "Tailwind",
-    "React",
-    "shadcn/ui",
-  ],
-  openGraph: {
-    title: "JirehGroup — Software, AI, Research, and Innovation",
-    description:
-      "Explore JirehGroup’s work in software, AI, and research. We build scalable tech solutions and contribute to the open-source ecosystem.",
-    url: "https://jirehgrp.com",
-    siteName: "JirehGroup",
-    images: [
-      {
-        url: "https://jirehgrp.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "JirehGroup Open Graph Image",
-      },
-    ],
-    type: "website",
-  },
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="description" content="JirehGroup drives innovation through expert software development, cutting-edge AI solutions, and research." />
-        <meta name="keywords" content="JirehGroup, Jireh Group, JirehGrp, software development, AI, Ethiopia, open-source, innovation" />
-        <link rel="canonical" href="https://jirehgrp.com" />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "JirehGroup",
-            "url": "https://jirehgrp.com",
-            "logo": "https://jirehgrp.com/logo.png",
-            "sameAs": [
-              "https://www.linkedin.com/company/jirehgrp",
-              "https://twitter.com/jirehgrp"
-            ],
-            "description": "JirehGroup is a tech firm focused on AI, software, and research innovation based in Ethiopia.",
-          })}
-        </script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (localStorage.getItem('jireh-theme') === 'dark' || 
-                    (!localStorage.getItem('jireh-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              } catch (_) {}
-            `,
-          }}
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${entoto.variable} font-mono antialiased`}
-        suppressHydrationWarning
-      >
-        <Providers>
-          <div className="min-h-screen flex flex-col bg-background transition-colors duration-300">
-            {children}
-          </div>
-        </Providers>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
+      <body>
+        <SitePreferencesProvider>{children}</SitePreferencesProvider>
       </body>
     </html>
   );
