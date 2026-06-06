@@ -2,49 +2,69 @@
 
 export default function About() {
   return (
-    <section id="about">
-      <div className="about-grid">
-        <div className="about-text">
-          <h2>About Jirehgrp</h2>
+    <section id="about" className="section">
+      <div className="section-head" data-reveal>
+        <span className="label">About / Jirehgrp</span>
+      </div>
 
-          <p>
-            Jirehgrp is an enterprise software and digital transformation company
-            focused on building systems that solve real operational problems —
-            not just software that looks impressive on the surface.
+      <div className="about-layout">
+        <div className="about-main" data-reveal>
+          <p className="about-statement">
+            We build systems that solve real operational problems — not software
+            that only looks impressive on the surface.
           </p>
-
-          <p>
-            Based in Addis Ababa, we work with growing businesses, established
-            companies, and ambitious organizations that need more than basic
-            tools. From ERP systems and internal business platforms to
-            automation, dashboards, and digital products, we build solutions
-            around how businesses actually operate.
-          </p>
-
-          <p>
-            Our approach combines business understanding, technical execution,
-            and long-term thinking. Every system we deliver is built for
-            performance, maintainability, and scale — so it remains useful as
-            your operations grow and evolve.
-          </p>
+          <div className="about-body">
+            <p>
+              Based in Addis Ababa, we work with growing businesses, established
+              companies, and ambitious organizations that need more than basic
+              tools. From ERP systems and internal platforms to automation,
+              dashboards, and digital products, we build around how businesses
+              actually operate.
+            </p>
+            <p>
+              Our approach combines business understanding, technical execution,
+              and long-term thinking. Every system we deliver is built for
+              performance, maintainability, and scale — so it stays useful as
+              your operations grow and evolve.
+            </p>
+          </div>
         </div>
 
-        <div className="skills-list">
-          <span className="skill-tag">
-            01_FOCUS: ERP / BUSINESS SYSTEMS / AUTOMATION
-          </span>
-          <span className="skill-tag">
-            02_BUILD: INTERNAL TOOLS / DASHBOARDS / PLATFORMS
-          </span>
-          <span className="skill-tag">
-            03_APPROACH: ANALYZE → DESIGN → BUILD → SUPPORT
-          </span>
-          <span className="skill-tag">
-            04_STANDARD: PERFORMANCE / RELIABILITY / SCALE
-          </span>
-          <span className="skill-tag">
-            05_BASE: ADDIS ABABA // AFRICA & BEYOND
-          </span>
+        <div
+          className="capabilities"
+          data-reveal
+          style={{ "--i": 1 } as React.CSSProperties}
+        >
+          <div className="capability">
+            <span className="capability__k">01</span>
+            <span className="capability__v">
+              Focus: ERP / Business Systems / Automation
+            </span>
+          </div>
+          <div className="capability">
+            <span className="capability__k">02</span>
+            <span className="capability__v">
+              Build: Internal Tools / Dashboards / Platforms
+            </span>
+          </div>
+          <div className="capability">
+            <span className="capability__k">03</span>
+            <span className="capability__v">
+              Approach: Analyze → Design → Build → Support
+            </span>
+          </div>
+          <div className="capability">
+            <span className="capability__k">04</span>
+            <span className="capability__v">
+              Standard: Performance / Reliability / Scale
+            </span>
+          </div>
+          <div className="capability">
+            <span className="capability__k">05</span>
+            <span className="capability__v">
+              Base: Addis Ababa // Africa &amp; Beyond
+            </span>
+          </div>
         </div>
       </div>
     </section>

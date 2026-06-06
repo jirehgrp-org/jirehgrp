@@ -1,71 +1,95 @@
 // @/components/sections/Services.tsx
 
+import {
+  IconWorldWww,
+  IconDeviceMobile,
+  IconDatabase,
+  IconCertificate,
+  IconCode,
+  IconHeadset,
+} from "@tabler/icons-react";
+
 const services = [
   {
-    code: "SOLUTION_01 // ERP",
-    stack: "CUSTOM / IMPLEMENTATION",
-    title: "ERP\nSolutions",
-    text: "Custom ERP systems designed to unify operations, improve visibility, and support business growth.",
+    num: "01",
+    code: "Web",
+    icon: IconWorldWww,
+    title: "Websites & Web Apps",
+    text: "Marketing sites, web platforms, and client portals — fast, modern, and built to convert.",
   },
   {
-    code: "SOLUTION_02 // SYSTEMS",
-    stack: "WORKFLOWS / OPERATIONS",
-    title: "Business\nSystems",
-    text: "Internal tools, dashboards, and operational systems built around your real business processes.",
+    num: "02",
+    code: "Mobile",
+    icon: IconDeviceMobile,
+    title: "Mobile Apps",
+    text: "iOS and Android apps people actually want to use, from concept to App Store and Play Store.",
   },
   {
-    code: "SOLUTION_03 // AUTOMATION",
-    stack: "INTEGRATIONS / EFFICIENCY",
-    title: "Automation &\nIntegrations",
-    text: "Reduce manual work by connecting systems, automating workflows, and improving process efficiency.",
+    num: "03",
+    code: "ERP",
+    icon: IconDatabase,
+    title: "ERP & Business Systems",
+    text: "Custom ERP, internal tools, and dashboards that unify operations and improve visibility.",
   },
   {
-    code: "SOLUTION_04 // PLATFORMS",
-    stack: "WEB / MOBILE / PORTALS",
-    title: "Digital\nPlatforms",
-    text: "Custom web platforms, client portals, and business applications built for modern organizations.",
+    num: "04",
+    code: "LMS",
+    icon: IconCertificate,
+    title: "Learning Platforms (LMS)",
+    text: "Course delivery, student management, assessments, and portals for schools and training teams.",
   },
   {
-    code: "SOLUTION_05 // DATA",
-    stack: "REPORTING / ANALYTICS",
-    title: "Dashboards &\nReporting",
-    text: "Real-time reporting and decision-support dashboards that help teams track performance and act faster.",
+    num: "05",
+    code: "Custom",
+    icon: IconCode,
+    title: "Custom Software",
+    text: "Bespoke systems built around problems off-the-shelf software can't solve. If you can define it, we can build it.",
   },
   {
-    code: "SOLUTION_06 // CONSULTING",
-    stack: "STRATEGY / TRANSFORMATION",
-    title: "Digital\nTransformation",
-    text: "Technology consulting and system planning to help businesses modernize, scale, and operate better.",
+    num: "06",
+    code: "Support",
+    icon: IconHeadset,
+    title: "Technical Support",
+    text: "Ongoing maintenance, monitoring, and improvements that keep your systems reliable as you grow.",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="solutions">
-      <div className="work-grid">
-        {services.map((service) => (
-          <article key={service.code} className="project-card">
-            <div className="card-header">
-              <span>{service.code}</span>
-              <span>{service.stack}</span>
-            </div>
+    <section id="solutions" className="section">
+      <div className="section-head" data-reveal>
+        <span className="label">Solutions / What we build</span>
+        <h2 className="section-title">
+          One team for the full range of software you need.
+        </h2>
+        <p className="section-intro">
+          From websites and mobile apps to ERP, learning platforms, and fully
+          custom systems — we design, build, and support it end to end.
+        </p>
+      </div>
 
-            <div>
-              <h3 className="project-title">
-                {service.title.split("\n").map((line) => (
-                  <span key={line}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </h3>
-            </div>
-
-            <div className="card-footer">
-              <span className="source-text">{service.text}</span>
-            </div>
-          </article>
-        ))}
+      <div className="solutions-grid">
+        {services.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <article
+              key={s.code}
+              className="solution-card"
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <div className="solution-card__top">
+                <span className="solution-card__icon">
+                  <Icon size={22} stroke={1.5} />
+                </span>
+                <span className="solution-card__num">{s.num}</span>
+              </div>
+              <h3 className="solution-card__title">{s.title}</h3>
+              <p className="solution-card__text">{s.text}</p>
+              <span className="solution-card__code label">{s.code}</span>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

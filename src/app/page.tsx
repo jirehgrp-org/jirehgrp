@@ -2,13 +2,17 @@
 
 import type { Metadata } from "next";
 import SentinelCursor from "@/components/SentinelCursor";
+import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
+import Stats from "@/components/sections/Stats";
 import Services from "@/components/sections/Services";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import Industries from "@/components/sections/Industries";
+import Process from "@/components/sections/Process";
+import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
+import Contact from "@/components/sections/Contact";
+import FeaturedWork from "@/components/sections/FeaturedWork";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -98,16 +102,28 @@ export default function HomePage() {
       />
 
       <SentinelCursor />
+      <ScrollReveal />
       <Navbar />
 
-      <main className="snap-wrapper">
+      <main className="site-main">
         <Hero />
+        <Stats />
         <Services />
         <Industries />
+        <FeaturedWork />
+        <Process />
         <About />
         <CTA />
         <Contact />
       </main>
+
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <span>© 2026 Jirehgrp</span>
+          <span>Addis Ababa · Africa &amp; Beyond</span>
+          <a href="#home">Back to top ↑</a>
+        </div>
+      </footer>
     </>
   );
 }

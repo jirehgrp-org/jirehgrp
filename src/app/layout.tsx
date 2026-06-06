@@ -1,7 +1,7 @@
 // @/app/layout.tsx
 
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { SitePreferencesProvider } from "@/components/providers/SitePreferencesProvider";
@@ -13,6 +13,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
 });
 
@@ -78,8 +83,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6efe3" },
-    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+    { media: "(prefers-color-scheme: light)", color: "#f4ecdb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0a09" },
   ],
 };
 
@@ -92,7 +97,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}
     >
       <body>
         <SitePreferencesProvider>{children}</SitePreferencesProvider>

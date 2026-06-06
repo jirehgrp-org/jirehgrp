@@ -107,53 +107,48 @@ $adminBody = '
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Website Inquiry</title>
 </head>
-<body style="margin:0;padding:0;background:#0a0a0a;font-family:Arial,Helvetica,sans-serif;color:#f5f5f5;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#0a0a0a;margin:0;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#0b0a09;font-family:Arial,Helvetica,sans-serif;color:#f5f1e9;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#0b0a09;margin:0;padding:32px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:760px;background:#111111;border:1px solid #232323;border-radius:20px;overflow:hidden;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:760px;background:#100e0c;border:1px solid #26221c;border-radius:20px;overflow:hidden;">
           <tr>
-            <td style="padding:32px 32px 20px 32px;border-bottom:1px solid #1f1f1f;">
-              <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8a8a8a;margin-bottom:14px;">
-                READY_FOR_NEW_PROJECTS
+            <td style="padding:36px 32px 24px 32px;border-bottom:1px solid #221e18;">
+              <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#e6b257;margin-bottom:16px;">
+                NEW INQUIRY // JIREHGRP.COM
               </div>
-
-              <div style="font-size:40px;line-height:1.05;font-weight:700;color:#ffffff;margin:0 0 14px 0;">
-                Start The<br>Conversation.
-              </div>
-
-              <div style="font-size:14px;line-height:1.7;color:#a1a1aa;">
-                New inquiry submitted through jirehgrp.com
+              <div style="font-family:Georgia,\'Times New Roman\',serif;font-size:44px;line-height:1.02;font-weight:700;letter-spacing:-1px;color:#f5f1e9;margin:0;">
+                Start the<br>conversation.
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:28px 32px 12px 32px;">
-              <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a8a;margin-bottom:10px;">
-                Contact Details
+            <td style="padding:26px 32px 4px 32px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#e6b257;">
+                Contact details
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:0 32px 8px 32px;">
+            <td style="padding:14px 32px 8px 32px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
                   <td style="width:50%;padding:0 8px 16px 0;vertical-align:top;">
-                    <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Name</div>
-                      <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeName . '</div>
+                    <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Name</div>
+                      <div style="font-size:16px;color:#f5f1e9;font-weight:600;">' . $safeName . '</div>
                     </div>
                   </td>
                   <td style="width:50%;padding:0 0 16px 8px;vertical-align:top;">
-                    <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Email</div>
-                      <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeEmail . '</div>
+                    <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Email</div>
+                      <div style="font-size:16px;color:#f5f1e9;font-weight:600;">' . $safeEmail . '</div>
                     </div>
                   </td>
                 </tr>
@@ -163,56 +158,52 @@ $adminBody = '
 
           <tr>
             <td style="padding:0 32px 16px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Department</div>
-                <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeDepartment . '</div>
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Department</div>
+                <div style="font-size:16px;color:#e6b257;font-weight:600;">' . $safeDepartment . '</div>
               </div>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 32px 16px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Project Subject</div>
-                <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeSubject . '</div>
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Project subject</div>
+                <div style="font-size:16px;color:#f5f1e9;font-weight:600;">' . $safeSubject . '</div>
               </div>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 32px 28px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:20px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:12px;">Message</div>
-                <div style="font-size:15px;line-height:1.8;color:#e4e4e7;">' . $safeMessage . '</div>
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:20px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:12px;">Message</div>
+                <div style="font-size:15px;line-height:1.8;color:#d8d2c6;">' . $safeMessage . '</div>
               </div>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 32px 32px 32px;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-top:1px solid #1f1f1f;padding-top:20px;">
-                <tr>
-                  <td style="padding-top:20px;">
-                    <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:10px;">Meta</div>
-                    <div style="font-size:13px;line-height:1.8;color:#a1a1aa;">
-                      <strong style="color:#ffffff;">Sent At:</strong> ' . esc($sentAt) . '<br>
-                      <strong style="color:#ffffff;">IP:</strong> ' . $safeIp . '<br>
-                      <strong style="color:#ffffff;">User Agent:</strong> ' . $safeAgent . '
-                    </div>
-                  </td>
-                </tr>
-              </table>
+              <div style="border-top:1px solid #221e18;padding-top:20px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#e6b257;margin-bottom:10px;">Meta</div>
+                <div style="font-size:13px;line-height:1.8;color:#a8a096;">
+                  <strong style="color:#f5f1e9;">Sent at:</strong> ' . esc($sentAt) . '<br>
+                  <strong style="color:#f5f1e9;">IP:</strong> ' . $safeIp . '<br>
+                  <strong style="color:#f5f1e9;">User agent:</strong> ' . $safeAgent . '
+                </div>
+              </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:20px 32px;border-top:1px solid #1f1f1f;background:#0d0d0d;">
+            <td style="padding:20px 32px;border-top:1px solid #221e18;background:#0d0b09;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#8a8a8a;">
-                    Hello • Sales • Support
+                  <td style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#8c857a;">
+                    Jirehgrp <span style="color:#e6b257;">//</span> Addis Ababa
                   </td>
-                  <td align="right" style="font-size:12px;color:#8a8a8a;">
+                  <td align="right" style="font-size:12px;color:#8c857a;">
                     © 2026 JIREHGRP
                   </td>
                 </tr>
@@ -232,73 +223,73 @@ $replyBody = '
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>We received your message</title>
 </head>
-<body style="margin:0;padding:0;background:#0a0a0a;font-family:Arial,Helvetica,sans-serif;color:#f5f5f5;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#0a0a0a;margin:0;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#0b0a09;font-family:Arial,Helvetica,sans-serif;color:#f5f1e9;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#0b0a09;margin:0;padding:32px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:760px;background:#111111;border:1px solid #232323;border-radius:20px;overflow:hidden;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:760px;background:#100e0c;border:1px solid #26221c;border-radius:20px;overflow:hidden;">
           <tr>
-            <td style="padding:32px;border-bottom:1px solid #1f1f1f;">
-              <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8a8a8a;margin-bottom:14px;">
-                READY_FOR_NEW_PROJECTS
+            <td style="padding:36px 32px;border-bottom:1px solid #221e18;">
+              <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#e6b257;margin-bottom:16px;">
+                MESSAGE RECEIVED
               </div>
-              <div style="font-size:40px;line-height:1.05;font-weight:700;color:#ffffff;margin:0 0 14px 0;">
-                Message<br>Received.
+              <div style="font-family:Georgia,\'Times New Roman\',serif;font-size:44px;line-height:1.02;font-weight:700;letter-spacing:-1px;color:#f5f1e9;margin:0 0 18px 0;">
+                Thanks, ' . $safeName . '.
               </div>
-              <div style="font-size:15px;line-height:1.8;color:#d4d4d8;">
-                Hi ' . $safeName . ',<br><br>
-                Thanks for reaching out to Jirehgrp. We have received your inquiry and will get back to you soon.
+              <div style="font-size:15px;line-height:1.8;color:#d8d2c6;">
+                We&rsquo;ve received your inquiry and a member of the Jirehgrp team
+                will get back to you shortly. Here&rsquo;s a copy for your records.
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:28px 32px 16px 32px;">
-              <div style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a8a;margin-bottom:10px;">
-                Inquiry Summary
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:0 32px 16px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Department</div>
-                <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeDepartment . '</div>
+            <td style="padding:26px 32px 14px 32px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#e6b257;">
+                Inquiry summary
               </div>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 32px 16px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:18px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:8px;">Subject</div>
-                <div style="font-size:16px;color:#ffffff;font-weight:600;">' . $safeSubject . '</div>
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Department</div>
+                <div style="font-size:16px;color:#e6b257;font-weight:600;">' . $safeDepartment . '</div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:0 32px 16px 32px;">
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:18px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:8px;">Subject</div>
+                <div style="font-size:16px;color:#f5f1e9;font-weight:600;">' . $safeSubject . '</div>
               </div>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 32px 32px 32px;">
-              <div style="background:#161616;border:1px solid #27272a;border-radius:14px;padding:20px;">
-                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#71717a;margin-bottom:12px;">Your Message</div>
-                <div style="font-size:15px;line-height:1.8;color:#e4e4e7;">' . $safeMessage . '</div>
+              <div style="background:#15120e;border:1px solid #2a251e;border-radius:14px;padding:20px;">
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8c857a;margin-bottom:12px;">Your message</div>
+                <div style="font-size:15px;line-height:1.8;color:#d8d2c6;">' . $safeMessage . '</div>
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding:20px 32px;border-top:1px solid #1f1f1f;background:#0d0d0d;">
+            <td style="padding:20px 32px;border-top:1px solid #221e18;background:#0d0b09;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#8a8a8a;">
+                  <td style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#8c857a;">
                     hello@jirehgrp.com
                   </td>
-                  <td align="right" style="font-size:12px;color:#8a8a8a;">
+                  <td align="right" style="font-size:12px;color:#8c857a;">
                     © 2026 JIREHGRP
                   </td>
                 </tr>
@@ -331,7 +322,8 @@ $success = mail(
     $to,
     '=?UTF-8?B?' . base64_encode($mailSubject) . '?=',
     $adminBody,
-    implode("\r\n", $headers)
+    implode("\r\n", $headers),
+    '-fhello@jirehgrp.com'
 );
 
 if (!$success) {
@@ -349,7 +341,8 @@ $replySent = mail(
     $email,
     '=?UTF-8?B?' . base64_encode($replySubject) . '?=',
     $replyBody,
-    implode("\r\n", $replyHeaders)
+    implode("\r\n", $replyHeaders),
+    '-fhello@jirehgrp.com'
 );
 
 if (!$replySent) {

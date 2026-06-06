@@ -1,8 +1,8 @@
 // @/components/sections/Contact.tsx
 
 "use client";
-
 import { useState } from "react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -39,89 +39,116 @@ export default function Contact() {
     }
   };
 
+  const buttonLabel =
+    status === "sending"
+      ? "Sending..."
+      : status === "sent"
+        ? "Message sent ✓"
+        : status === "error"
+          ? "Try again"
+          : "Request consultation";
+
   return (
-    <section id="contact" className="contact-section">
-      <h1 className="hero-title">
-        Let’s Build The
-        <br />
-        Right System.
-      </h1>
+    <section id="contact" className="section">
+      <div className="contact-layout">
+        <div className="contact-aside" data-reveal>
+          <span className="label">Contact / Start a project</span>
+          <h2 className="section-title">Let&apos;s build the right system.</h2>
+          <p className="section-intro">
+            Tell us about your business, your operational challenges, or the
+            system you need. We&apos;ll help you identify the right next step.
+          </p>
 
-      <p className="hero-sub">
-        Tell us about your business, your operational challenges, or the system
-        you need. Whether you are exploring ERP, automation, internal tools, or
-        a custom digital platform, we’ll help you identify the right next step.
-      </p>
-
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-grid">
-          <input
-            name="name"
-            placeholder="YOUR NAME"
-            required
-            className="form-input"
-          />
-
-          <input
-            name="email"
-            type="email"
-            placeholder="YOUR EMAIL"
-            required
-            className="form-input"
-          />
+          <div className="contact-channels">
+            <a className="contact-channel" href="mailto:hello@jirehgrp.com">
+              <span>General</span>
+              <small>hello@jirehgrp.com</small>
+            </a>
+            <a className="contact-channel" href="mailto:sales@jirehgrp.com">
+              <span>Sales</span>
+              <small>sales@jirehgrp.com</small>
+            </a>
+            <a className="contact-channel" href="mailto:support@jirehgrp.com">
+              <span>Support</span>
+              <small>support@jirehgrp.com</small>
+            </a>
+          </div>
         </div>
 
-        <select
-          name="department"
-          defaultValue="general"
-          className="form-input"
-          aria-label="Department"
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          data-reveal
+          style={{ "--i": 1 } as React.CSSProperties}
         >
-          <option value="general">GENERAL INQUIRY</option>
-          <option value="sales">SALES / PROPOSAL</option>
-          <option value="support">SUPPORT</option>
-        </select>
+          <div className="form-grid">
+            <div className="field">
+              <label htmlFor="name">Your name</label>
+              <input
+                id="name"
+                name="name"
+                placeholder="Jane Doe"
+                required
+                className="form-input"
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="email">Your email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="jane@company.com"
+                required
+                className="form-input"
+              />
+            </div>
+          </div>
 
-        <input
-          name="subject"
-          placeholder="PROJECT SUBJECT / BUSINESS NEED"
-          required
-          className="form-input"
-        />
+          <div className="field">
+            <label htmlFor="department">Department</label>
+            <select
+              id="department"
+              name="department"
+              defaultValue="general"
+              className="form-select"
+            >
+              <option value="general">General inquiry</option>
+              <option value="sales">Sales / Proposal</option>
+              <option value="support">Support</option>
+            </select>
+          </div>
 
-        <textarea
-          name="message"
-          placeholder="TELL US ABOUT YOUR BUSINESS, CURRENT CHALLENGES, OR THE SYSTEM YOU WANT TO BUILD..."
-          required
-          className="form-textarea"
-        />
+          <div className="field">
+            <label htmlFor="subject">Project subject</label>
+            <input
+              id="subject"
+              name="subject"
+              placeholder="What do you need built?"
+              required
+              className="form-input"
+            />
+          </div>
 
-        <button type="submit" className="form-button">
-          {status === "sending"
-            ? "SENDING..."
-            : status === "sent"
-              ? "MESSAGE SENT ✓"
-              : status === "error"
-                ? "TRY AGAIN"
-                : "REQUEST CONSULTATION"}
-        </button>
-      </form>
+          <div className="field">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your business, current challenges, or the system you want to build..."
+              required
+              className="form-textarea"
+            />
+          </div>
 
-      <div className="social-grid">
-        <a href="mailto:hello@jirehgrp.com" className="social-link">
-          HELLO
-        </a>
-        <a href="mailto:sales@jirehgrp.com" className="social-link">
-          SALES
-        </a>
-        <a href="mailto:support@jirehgrp.com" className="social-link">
-          SUPPORT
-        </a>
-      </div>
-
-      <div className="contact-footer">
-        <span>READY_FOR_NEW_PROJECTS // CONSULTATIONS</span>
-        <span>© 2026 JIREHGRP</span>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={status === "sending"}
+          >
+            {buttonLabel} <IconArrowUpRight size={16} stroke={2} />
+          </button>
+        </form>
       </div>
     </section>
   );

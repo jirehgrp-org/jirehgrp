@@ -19,7 +19,9 @@ jirehgrp/
 │   │   ├── sections/
 │   │   │   ├── About.tsx
 │   │   │   ├── Contact.tsx
+│   │   │   ├── CTA.tsx
 │   │   │   ├── Hero.tsx
+│   │   │   ├── Industries.tsx
 │   │   │   └── Services.tsx
 │   │   ├── LanguageToggle.tsx
 │   │   ├── Navbar.tsx

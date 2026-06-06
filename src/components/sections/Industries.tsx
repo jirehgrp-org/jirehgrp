@@ -1,65 +1,88 @@
 // @/components/sections/Industries.tsx
 
+import {
+  IconBuildingFactory2,
+  IconBuildingStore,
+  IconBuildingSkyscraper,
+  IconHeartbeat,
+  IconSchool,
+  IconTruck,
+} from "@tabler/icons-react";
+
 const industries = [
   {
-    code: "INDUSTRY_01 // MANUFACTURING",
-    title: "Manufacturing &\nProduction",
-    text: "ERP solutions for inventory control, production planning, quality tracking, and supply chain operations.",
+    num: "01",
+    icon: IconBuildingFactory2,
+    title: "Manufacturing & Production",
+    text: "Inventory control, production planning, quality tracking, and supply chain operations.",
   },
   {
-    code: "INDUSTRY_02 // RETAIL",
-    title: "Retail &\nDistribution",
-    text: "Systems for point-of-sale, stock management, customer analytics, and multi-location coordination.",
+    num: "02",
+    icon: IconBuildingStore,
+    title: "Retail & Distribution",
+    text: "Point-of-sale, stock management, customer analytics, and multi-location coordination.",
   },
   {
-    code: "INDUSTRY_03 // CONSTRUCTION",
-    title: "Construction &\nReal Estate",
-    text: "Project tracking, resource planning, financial oversight, and client management tools built for complex operations.",
+    num: "03",
+    icon: IconBuildingSkyscraper,
+    title: "Construction & Real Estate",
+    text: "Project tracking, resource planning, financial oversight, and client management.",
   },
   {
-    code: "INDUSTRY_04 // HEALTHCARE",
-    title: "Healthcare &\nPharmaceuticals",
-    text: "Operational systems for records, inventory, compliance, billing, and internal process management.",
+    num: "04",
+    icon: IconHeartbeat,
+    title: "Healthcare & Pharma",
+    text: "Records, inventory, compliance, billing, and internal process management.",
   },
   {
-    code: "INDUSTRY_05 // EDUCATION",
-    title: "Education &\nTraining",
-    text: "Student systems, learning platforms, administrative tools, and portals for better institutional coordination.",
+    num: "05",
+    icon: IconSchool,
+    title: "Education & Training",
+    text: "Student systems, learning platforms, admin tools, and institutional portals.",
   },
   {
-    code: "INDUSTRY_06 // LOGISTICS",
-    title: "Logistics &\nTransportation",
-    text: "Fleet, cargo, routing, and delivery management systems designed for visibility and operational efficiency.",
+    num: "06",
+    icon: IconTruck,
+    title: "Logistics & Transport",
+    text: "Fleet, cargo, routing, and delivery systems for visibility and efficiency.",
   },
 ];
 
 export default function Industries() {
   return (
-    <section id="industries">
-      <div className="work-grid">
-        {industries.map((industry) => (
-          <article key={industry.code} className="project-card">
-            <div className="card-header">
-              <span>{industry.code}</span>
-              <span>BUSINESS_SYSTEMS / ERP / AUTOMATION</span>
-            </div>
+    <section id="industries" className="section">
+      <div className="section-head" data-reveal>
+        <span className="label">Industries / Where we work</span>
+        <h2 className="section-title">
+          Built for the realities of complex operations.
+        </h2>
+        <p className="section-intro">
+          We adapt to each sector&apos;s workflows, constraints, and compliance
+          needs — not the other way around.
+        </p>
+      </div>
 
-            <div>
-              <h3 className="project-title">
-                {industry.title.split("\n").map((line) => (
-                  <span key={line}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </h3>
-            </div>
-
-            <div className="card-footer">
-              <span className="source-text">{industry.text}</span>
-            </div>
-          </article>
-        ))}
+      <div className="industry-list">
+        {industries.map((ind, i) => {
+          const Icon = ind.icon;
+          return (
+            <article
+              key={ind.num}
+              className="industry-item"
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <span className="industry-item__index">{ind.num}</span>
+              <span className="industry-item__icon">
+                <Icon size={26} stroke={1.5} />
+              </span>
+              <div>
+                <h3 className="industry-item__title">{ind.title}</h3>
+                <p className="industry-item__text">{ind.text}</p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
