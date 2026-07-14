@@ -55,41 +55,52 @@ const services = [
 ];
 
 export default function Services() {
-  return (
-    <section id="solutions" className="section">
-      <div className="section-head" data-reveal>
-        <span className="label">Solutions / What we build</span>
-        <h2 className="section-title">
-          One team for the full range of software you need.
-        </h2>
-        <p className="section-intro">
-          From websites and mobile apps to ERP, learning platforms, and fully
-          custom systems — we design, build, and support it end to end.
-        </p>
-      </div>
+  const total = String(services.length).padStart(2, "0");
 
-      <div className="solutions-grid">
-        {services.map((s, i) => {
-          const Icon = s.icon;
-          return (
-            <article
-              key={s.code}
-              className="solution-card"
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-            >
-              <div className="solution-card__top">
-                <span className="solution-card__icon">
-                  <Icon size={22} stroke={1.5} />
-                </span>
-                <span className="solution-card__num">{s.num}</span>
-              </div>
-              <h3 className="solution-card__title">{s.title}</h3>
-              <p className="solution-card__text">{s.text}</p>
-              <span className="solution-card__code label">{s.code}</span>
-            </article>
-          );
-        })}
+  return (
+    <section id="solutions" className="solutions-pin" data-hpin>
+      <div className="hpin__pin">
+        <div className="hpin__track">
+          {/* Intro panel — scrolls in first */}
+          <div className="hpin__intro" data-reveal>
+            <span className="label">Solutions / What we build</span>
+            <h2 className="section-title">
+              One team for the full range of software you need.
+            </h2>
+            <p className="section-intro">
+              From websites and mobile apps to ERP, learning platforms, and
+              fully custom systems — we design, build, and support it end to end.
+            </p>
+            <span className="hpin__hint">Scroll to explore →</span>
+          </div>
+
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <article key={s.code} className="solution-card hpin__card">
+                <div className="solution-card__top">
+                  <span className="solution-card__icon">
+                    <Icon size={22} stroke={1.5} />
+                  </span>
+                  <span className="solution-card__num">{s.num}</span>
+                </div>
+                <h3 className="solution-card__title">{s.title}</h3>
+                <p className="solution-card__text">{s.text}</p>
+                <span className="solution-card__code label">{s.code}</span>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Progress UI — fixed during the pin */}
+        <div className="hpin__progress" aria-hidden="true">
+          <span className="hpin__count">
+            <b data-hpin-current>01</b> / {total}
+          </span>
+          <span className="hpin__bar">
+            <span className="hpin__bar-fill" data-hpin-bar />
+          </span>
+        </div>
       </div>
     </section>
   );

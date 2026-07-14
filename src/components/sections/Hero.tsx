@@ -6,34 +6,22 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 export default function Hero() {
   return (
     <section id="home" className="section hero">
-      <span className="hero-eyebrow" data-reveal>
+      <span className="hero-eyebrow" data-hero-fade>
         <span className="dot" />
         <span className="label">Enterprise software · Addis Ababa</span>
       </span>
 
-      <h1
-        className="hero-title"
-        data-reveal
-        style={{ "--i": 1 } as React.CSSProperties}
-      >
+      <h1 className="hero-title">
         We build the <em>enterprise systems</em> that run modern businesses.
       </h1>
 
-      <p
-        className="hero-sub"
-        data-reveal
-        style={{ "--i": 2 } as React.CSSProperties}
-      >
+      <p className="hero-sub" data-hero-fade>
         Jirehgrp designs ERP solutions, internal business platforms, and custom
         software that help companies operate better, move faster, and grow with
         confidence.
       </p>
 
-      <div
-        className="hero-actions"
-        data-reveal
-        style={{ "--i": 3 } as React.CSSProperties}
-      >
+      <div className="hero-actions" data-hero-fade>
         <a href="#contact" className="btn btn-primary">
           Request a consultation <IconArrowUpRight size={16} stroke={2} />
         </a>
@@ -45,11 +33,7 @@ export default function Hero() {
         </a>
       </div>
 
-      <div
-        className="hero-meta"
-        data-reveal
-        style={{ "--i": 4 } as React.CSSProperties}
-      >
+      <div className="hero-meta" data-hero-fade>
         <span>
           <b>Addis Ababa</b> — Africa &amp; Beyond
         </span>

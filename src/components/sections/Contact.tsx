@@ -2,6 +2,7 @@
 
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -14,21 +15,29 @@ export default function Contact() {
     setStatus("sending");
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get("name"),
+      email: fd.get("email"),
+      services: [fd.get("department") || "other"],
+      projectType: "unsure",
+      budget: "discuss",
+      timeline: "flexible",
+      message: fd.get("message"),
+      company_website: fd.get("company_website"), // honeypot
+    };
 
     try {
-      const res = await fetch("/contact.php", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
         cache: "no-store",
       });
-
       const data = await res.json();
-
       if (!res.ok || data.status !== "success") {
-        throw new Error(data.message || "Failed to send message");
+        throw new Error(data.message || "Failed");
       }
-
       setStatus("sent");
       form.reset();
       setTimeout(() => setStatus("idle"), 2500);
@@ -46,18 +55,24 @@ export default function Contact() {
         ? "Message sent ✓"
         : status === "error"
           ? "Try again"
-          : "Request consultation";
+          : "Send message";
 
   return (
     <section id="contact" className="section">
       <div className="contact-layout">
         <div className="contact-aside" data-reveal>
-          <span className="label">Contact / Start a project</span>
+          <span className="label">Contact / Get in touch</span>
           <h2 className="section-title">Let&apos;s build the right system.</h2>
           <p className="section-intro">
-            Tell us about your business, your operational challenges, or the
-            system you need. We&apos;ll help you identify the right next step.
+            Have a quick question? Drop us a line. Starting a real project?
+            Use our project planner for a faster, more tailored response.
           </p>
+
+          <div className="project-links" style={{ marginTop: 26 }}>
+            <Link href="/start" className="btn btn-ghost">
+              Plan a project <IconArrowUpRight size={16} stroke={2} />
+            </Link>
+          </div>
 
           <div className="contact-channels">
             <a className="contact-channel" href="mailto:hello@jirehgrp.com">
@@ -81,53 +96,36 @@ export default function Contact() {
           data-reveal
           style={{ "--i": 1 } as React.CSSProperties}
         >
+          {/* honeypot */}
+          <input
+            type="text"
+            name="company_website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+          />
+
           <div className="form-grid">
             <div className="field">
               <label htmlFor="name">Your name</label>
-              <input
-                id="name"
-                name="name"
-                placeholder="Jane Doe"
-                required
-                className="form-input"
-              />
+              <input id="name" name="name" placeholder="Jane Doe" required className="form-input" />
             </div>
             <div className="field">
               <label htmlFor="email">Your email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="jane@company.com"
-                required
-                className="form-input"
-              />
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required className="form-input" />
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="department">Department</label>
-            <select
-              id="department"
-              name="department"
-              defaultValue="general"
-              className="form-select"
-            >
-              <option value="general">General inquiry</option>
-              <option value="sales">Sales / Proposal</option>
-              <option value="support">Support</option>
+            <label htmlFor="department">Topic</label>
+            <select id="department" name="department" defaultValue="other" className="form-select">
+              <option value="other">General inquiry</option>
+              <option value="website">Website / Web App</option>
+              <option value="mobile">Mobile App</option>
+              <option value="erp">ERP / Business System</option>
+              <option value="support">Technical Support</option>
             </select>
-          </div>
-
-          <div className="field">
-            <label htmlFor="subject">Project subject</label>
-            <input
-              id="subject"
-              name="subject"
-              placeholder="What do you need built?"
-              required
-              className="form-input"
-            />
           </div>
 
           <div className="field">
@@ -135,17 +133,13 @@ export default function Contact() {
             <textarea
               id="message"
               name="message"
-              placeholder="Tell us about your business, current challenges, or the system you want to build..."
+              placeholder="How can we help?"
               required
               className="form-textarea"
             />
           </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={status === "sending"}
-          >
+          <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
             {buttonLabel} <IconArrowUpRight size={16} stroke={2} />
           </button>
         </form>

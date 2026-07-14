@@ -14,6 +14,7 @@ import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 import FeaturedWork from "@/components/sections/FeaturedWork";
 import { siteConfig } from "@/lib/site";
+import ScrollMotion from "@/components/ScrollMotion";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -103,6 +104,7 @@ export default function HomePage() {
 
       <SentinelCursor />
       <ScrollReveal />
+      <ScrollMotion />
       <Navbar />
 
       <main className="site-main">

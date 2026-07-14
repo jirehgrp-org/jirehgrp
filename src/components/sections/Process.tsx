@@ -33,18 +33,21 @@ export default function Process() {
         </h2>
       </div>
 
-      <div className="process-grid">
+      <div className="process-stack" data-stack>
         {steps.map((s, i) => (
-          <article
+          <div
             key={s.num}
-            className="step"
-            data-reveal
+            className="stack-item"
             style={{ "--i": i } as React.CSSProperties}
           >
-            <span className="step__num">{s.num} —</span>
-            <h3 className="step__title">{s.title}</h3>
-            <p className="step__text">{s.text}</p>
-          </article>
+            <article className="step step--stack">
+              <span className="step__num">{s.num}</span>
+              <div className="step__body">
+                <h3 className="step__title">{s.title}</h3>
+                <p className="step__text">{s.text}</p>
+              </div>
+            </article>
+          </div>
         ))}
       </div>
     </section>

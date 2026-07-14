@@ -3,17 +3,16 @@
 const stats = [
   { value: 6, label: "Core solution areas" },
   { value: 6, label: "Industries served" },
-  // TODO: set your real figure (years in business / systems delivered)
-  { value: 5, suffix: "+", label: "Years building systems" },
+  { value: 2, suffix: "+", label: "Years building systems" },
   { value: 100, suffix: "%", label: "Built for reliability & scale" },
 ];
 
 export default function Stats() {
   return (
     <section className="section stats-section">
-      <div className="stats" data-reveal>
+      <div className="stats" data-rise>
         {stats.map((s) => (
-          <div className="stat" key={s.label}>
+          <div className="stat" data-rise-item key={s.label}>
             <div
               className="stat__num"
               data-count={s.value}

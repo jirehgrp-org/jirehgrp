@@ -5,6 +5,7 @@ import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { SitePreferencesProvider } from "@/components/providers/SitePreferencesProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,7 +101,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}
     >
       <body>
-        <SitePreferencesProvider>{children}</SitePreferencesProvider>
+        <SitePreferencesProvider>
+          <SmoothScroll>{children}</SmoothScroll>
+        </SitePreferencesProvider>
       </body>
     </html>
   );

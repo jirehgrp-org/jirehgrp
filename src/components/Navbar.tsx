@@ -14,6 +14,7 @@ const navItems = [
   { href: "/#process", label: "/process" },
   { href: "/#about", label: "/about" },
   { href: "/#contact", label: "/contact" },
+  { href: "/start", label: "/start" },
 ];
 
 export default function Navbar() {

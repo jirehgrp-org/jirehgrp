@@ -62,16 +62,11 @@ export default function Industries() {
         </p>
       </div>
 
-      <div className="industry-list">
-        {industries.map((ind, i) => {
+      <div className="industry-list" data-industry-list>
+        {industries.map((ind) => {
           const Icon = ind.icon;
           return (
-            <article
-              key={ind.num}
-              className="industry-item"
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-            >
+            <article key={ind.num} className="industry-item">
               <span className="industry-item__index">{ind.num}</span>
               <span className="industry-item__icon">
                 <Icon size={26} stroke={1.5} />
