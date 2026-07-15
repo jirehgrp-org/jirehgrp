@@ -1,4 +1,4 @@
-// @/app/page.tsx
+// @/components/HomePage.tsx
 
 "use client";
 import {
@@ -8,6 +8,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
+import Link from "next/link";
 import {
   ArrowDown,
   ArrowRight,
@@ -27,135 +28,12 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import styles from "./page.module.css";
+
+import LanguageToggle from "@/components/LanguageToggle";
+import type { HomeDictionary, SiteLanguage } from "@/content/home";
+import styles from "./HomePage.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const services = [
-  {
-    number: "01",
-    icon: Layers3,
-    title: "ERP & Operations",
-    description:
-      "Connected systems for finance, inventory, sales, procurement, branches, people, and reporting — designed around the way your company actually operates.",
-    tags: ["ERP architecture", "Workflow design", "Role-based access"],
-  },
-  {
-    number: "02",
-    icon: Network,
-    title: "Internal Platforms",
-    description:
-      "Purpose-built portals, dashboards, approval systems, and operational tools that replace scattered spreadsheets, chats, and manual handoffs.",
-    tags: ["Admin platforms", "Dashboards", "Process automation"],
-  },
-  {
-    number: "03",
-    icon: Braces,
-    title: "Custom Software",
-    description:
-      "Web and mobile products engineered from first principle — from customer-facing platforms to complex software that becomes core business infrastructure.",
-    tags: ["Web applications", "Mobile products", "API systems"],
-  },
-  {
-    number: "04",
-    icon: Database,
-    title: "Data & Intelligence",
-    description:
-      "A reliable data layer that turns day-to-day activity into visibility, accountability, and decisions your team can act on with confidence.",
-    tags: ["Analytics", "Data modeling", "Executive reporting"],
-  },
-];
-
-const projects = [
-  {
-    number: "01",
-    type: "Enterprise platform",
-    title: "A unified operating system for a growing multi-branch business.",
-    summary:
-      "Sales, inventory, expenses, users, reporting, and branch operations brought into one secure system.",
-    tags: ["ERP", "Operations", "Analytics"],
-    imageLabel: "Enterprise dashboard / product interface",
-  },
-  {
-    number: "02",
-    type: "Digital product",
-    title: "A social platform designed for scale, safety, and daily engagement.",
-    summary:
-      "Mobile-first product engineering across authentication, feeds, notifications, moderation, and growth systems.",
-    tags: ["Mobile", "Platform", "Infrastructure"],
-    imageLabel: "Mobile app screens / campaign photography",
-  },
-  {
-    number: "03",
-    type: "Operational software",
-    title: "A faster point-of-sale and management workflow for hospitality teams.",
-    summary:
-      "A focused transaction experience connected to menus, staff, payments, reconciliation, and management reporting.",
-    tags: ["POS", "Hospitality", "Reporting"],
-    imageLabel: "POS interface / restaurant operations",
-  },
-];
-
-const process = [
-  {
-    number: "01",
-    title: "Understand the operation",
-    text: "We map the real workflow, constraints, responsibilities, and decisions before we discuss screens or features.",
-  },
-  {
-    number: "02",
-    title: "Design the system",
-    text: "We define the architecture, user journeys, data model, and delivery priorities around measurable business value.",
-  },
-  {
-    number: "03",
-    title: "Build in clear stages",
-    text: "Working software is delivered in focused releases, reviewed with your team, and improved through real operational feedback.",
-  },
-  {
-    number: "04",
-    title: "Launch and evolve",
-    text: "We support rollout, adoption, monitoring, and the next layer of improvements as the business grows.",
-  },
-];
-
-const capabilityWords = [
-  "ERP SYSTEMS",
-  "CUSTOM SOFTWARE",
-  "INTERNAL PLATFORMS",
-  "AUTOMATION",
-  "DATA & ANALYTICS",
-];
-
-
-const companyFacts = [
-  {
-    value: "Addis Ababa",
-    label:
-      "Headquartered in Ethiopia and building dependable digital systems for organisations across Africa and beyond.",
-  },
-  {
-    value: "End-to-end",
-    label:
-      "Discovery, product strategy, experience design, architecture, engineering, deployment, and support in one connected team.",
-  },
-  {
-    value: "Built to last",
-    label:
-      "Maintainable software designed around real people, changing operations, growing teams, and long-term business ownership.",
-  },
-];
-
-const technologyStack = [
-  "NEXT.JS",
-  "REACT",
-  "NODE.JS",
-  "DJANGO",
-  "POSTGRESQL",
-  "DOCKER",
-  "CLOUD INFRASTRUCTURE",
-  "API INTEGRATIONS",
-];
 
 const codeStreams = [
   {
@@ -293,7 +171,8 @@ function CodeBackdrop() {
           const streamText = Array.from({ length: 10 }, (_, repeatIndex) =>
             stream.lines
               .map((line, lineIndex) => {
-                const lineNumber = repeatIndex * stream.lines.length + lineIndex + 1;
+                const lineNumber =
+                  repeatIndex * stream.lines.length + lineIndex + 1;
                 return `${String(lineNumber).padStart(3, "0")}  ${line}`;
               })
               .join("\n"),
@@ -303,11 +182,13 @@ function CodeBackdrop() {
             <div
               className={styles.codeStream}
               key={`${stream.label}-${streamIndex}`}
-              style={{
-                "--stream-duration": `${18 + (streamIndex % 4) * 3.5}s`,
-                "--stream-delay": `${streamIndex * -3.2}s`,
-                "--stream-opacity": 0.72 + (streamIndex % 3) * 0.08,
-              } as CSSProperties}
+              style={
+                {
+                  "--stream-duration": `${18 + (streamIndex % 4) * 3.5}s`,
+                  "--stream-delay": `${streamIndex * -3.2}s`,
+                  "--stream-opacity": 0.72 + (streamIndex % 3) * 0.08,
+                } as CSSProperties
+              }
             >
               <div className={styles.codeStreamHead}>
                 <span>{String(streamIndex + 1).padStart(2, "0")}</span>
@@ -327,7 +208,9 @@ function CodeBackdrop() {
       </div>
 
       <div className={styles.codeTelemetry}>
-        <span><i /> BUILD RUNNING</span>
+        <span>
+          <i /> BUILD RUNNING
+        </span>
         <span>JIREH / SYSTEMS ONLINE</span>
         <span>ADDIS ABABA · 09.0327° N</span>
       </div>
@@ -357,27 +240,79 @@ function LaptopCodeVisual() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <g className={styles.laptopFloat}>
-          <rect x="132" y="76" width="376" height="264" rx="18" fill="#111414" stroke="#B7FF39" strokeWidth="3" />
-          <rect x="151" y="96" width="338" height="224" rx="8" fill="#090B0B" stroke="rgba(243,241,233,.22)" />
+          <rect
+            x="132"
+            y="76"
+            width="376"
+            height="264"
+            rx="18"
+            fill="#111414"
+            stroke="#B7FF39"
+            strokeWidth="3"
+          />
+          <rect
+            x="151"
+            y="96"
+            width="338"
+            height="224"
+            rx="8"
+            fill="#090B0B"
+            stroke="rgba(243,241,233,.22)"
+          />
           <circle cx="320" cy="86" r="4" fill="#B7FF39" />
-          <path d="M94 365H546L590 428H50L94 365Z" fill="#171A1A" stroke="rgba(243,241,233,.28)" strokeWidth="3" />
-          <path d="M50 428H590C586 446 570 456 548 456H92C70 456 54 446 50 428Z" fill="#0B0D0D" stroke="rgba(243,241,233,.22)" strokeWidth="3" />
-          <rect x="260" y="383" width="120" height="38" rx="8" fill="#0B0D0D" stroke="rgba(183,255,57,.34)" />
-          <path d="M126 390H235M405 390H514M112 410H225M415 410H528" stroke="rgba(243,241,233,.13)" strokeWidth="7" strokeLinecap="round" />
+          <path
+            d="M94 365H546L590 428H50L94 365Z"
+            fill="#171A1A"
+            stroke="rgba(243,241,233,.28)"
+            strokeWidth="3"
+          />
+          <path
+            d="M50 428H590C586 446 570 456 548 456H92C70 456 54 446 50 428Z"
+            fill="#0B0D0D"
+            stroke="rgba(243,241,233,.22)"
+            strokeWidth="3"
+          />
+          <rect
+            x="260"
+            y="383"
+            width="120"
+            height="38"
+            rx="8"
+            fill="#0B0D0D"
+            stroke="rgba(183,255,57,.34)"
+          />
+          <path
+            d="M126 390H235M405 390H514M112 410H225M415 410H528"
+            stroke="rgba(243,241,233,.13)"
+            strokeWidth="7"
+            strokeLinecap="round"
+          />
         </g>
       </svg>
 
       <div className={styles.laptopScreenCode}>
         <div className={styles.screenChrome}>
-          <span /><span /><span />
+          <span />
+          <span />
+          <span />
           <small>jireh-core.ts</small>
         </div>
         <div className={styles.screenLines}>
-          <span><b>01</b> const system = build(operation);</span>
-          <span><b>02</b> workflow.connect(branches);</span>
-          <span><b>03</b> data.stream(&quot;real-time&quot;);</span>
-          <span><b>04</b> business.scale(confidently);</span>
-          <span><b>05</b> await deploy(system);</span>
+          <span>
+            <b>01</b> const system = build(operation);
+          </span>
+          <span>
+            <b>02</b> workflow.connect(branches);
+          </span>
+          <span>
+            <b>03</b> data.stream(&quot;real-time&quot;);
+          </span>
+          <span>
+            <b>04</b> business.scale(confidently);
+          </span>
+          <span>
+            <b>05</b> await deploy(system);
+          </span>
         </div>
       </div>
 
@@ -386,11 +321,13 @@ function LaptopCodeVisual() {
           <span
             className={styles.flyingCode}
             key={snippet}
-            style={{
-              "--chip-left": `${12 + index * 13}%`,
-              "--chip-delay": `${index * -0.72}s`,
-              "--chip-x": `${(index % 2 === 0 ? -1 : 1) * (18 + index * 5)}px`,
-            } as CSSProperties}
+            style={
+              {
+                "--chip-left": `${12 + index * 13}%`,
+                "--chip-delay": `${index * -0.72}s`,
+                "--chip-x": `${(index % 2 === 0 ? -1 : 1) * (18 + index * 5)}px`,
+              } as CSSProperties
+            }
           >
             {snippet}
           </span>
@@ -398,7 +335,9 @@ function LaptopCodeVisual() {
       </div>
 
       <div className={styles.buildVisualStatus}>
-        <span><i /> SYSTEM BUILDING</span>
+        <span>
+          <i /> SYSTEM BUILDING
+        </span>
         <span>PRODUCT + ENGINEERING</span>
       </div>
     </div>
@@ -416,22 +355,30 @@ function ArrowLink({ children, href }: { children: ReactNode; href: string }) {
   );
 }
 
-function ImagePlaceholder({ label, index }: { label: string; index: string }) {
+function ImagePlaceholder({
+  label,
+  recommendedLabel,
+}: {
+  label: string;
+  index: string;
+  recommendedLabel: string;
+}) {
   return (
-    <div className={styles.imagePlaceholder} aria-label={`Image placeholder: ${label}`}>
+    <div
+      className={styles.imagePlaceholder}
+    >
       <div className={styles.imagePlaceholderGrid} aria-hidden="true" />
       <div className={styles.imagePlaceholderGlow} aria-hidden="true" />
       <div className={styles.imagePlaceholderTop}>
-        <span>IMAGE SLOT / {index}</span>
+
         <Plus size={18} strokeWidth={1.5} />
       </div>
       <div className={styles.imagePlaceholderCenter}>
         <Sparkles size={26} strokeWidth={1.35} />
         <p>{label}</p>
-        <small>Replace this component with your image</small>
       </div>
       <div className={styles.imagePlaceholderBottom}>
-        <span>16:10 recommended</span>
+        <span>{recommendedLabel}</span>
         <span>JIREHGRP</span>
       </div>
     </div>
@@ -482,16 +429,34 @@ function SystemVisual() {
   );
 }
 
-export default function HomePage() {
+type HomePageProps = {
+  language: SiteLanguage;
+  copy: HomeDictionary;
+};
+
+export default function HomePage({ language, copy }: HomePageProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const homeHref = language === "am" ? "/am" : "/";
+  const startHref = language === "am" ? "/am/start" : "/start";
+  const serviceIcons = [Layers3, Network, Braces, Database];
+  const mobileNavigation = [
+    [copy.navigation.about, "#about"],
+    [copy.navigation.services, "#services"],
+    [copy.navigation.work, "#work"],
+    [copy.navigation.approach, "#approach"],
+    [copy.navigation.contact, "#contact"],
+  ] as const;
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     let tickerHandler: ((time: number) => void) | null = null;
     let lenis: Lenis | null = null;
 
@@ -530,7 +495,9 @@ export default function HomePage() {
 
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       const heroLines = gsap.utils.toArray<HTMLElement>("[data-hero-reveal]");
-      const heroFlashes = gsap.utils.toArray<HTMLElement>(`.${styles.heroLineFlash}`);
+      const heroFlashes = gsap.utils.toArray<HTMLElement>(
+        `.${styles.heroLineFlash}`,
+      );
 
       gsap.set(heroLines, { opacity: 0 });
       gsap.set(
@@ -544,11 +511,15 @@ export default function HomePage() {
           { yPercent: 115 },
           { yPercent: 0, duration: 0.8, stagger: 0.06 },
         )
-        .to(`.${styles.loaderProgressBar}`, {
-          scaleX: 1,
-          duration: 0.9,
-          ease: "power2.inOut",
-        }, "-=0.35")
+        .to(
+          `.${styles.loaderProgressBar}`,
+          {
+            scaleX: 1,
+            duration: 0.9,
+            ease: "power2.inOut",
+          },
+          "-=0.35",
+        )
         .to(`.${styles.loader}`, {
           yPercent: -100,
           duration: 0.95,
@@ -561,7 +532,7 @@ export default function HomePage() {
           "-=0.08",
         )
         // Let the running system own the screen before the message lands.
-        .to({}, { duration: 1.25 });
+        .to({}, { duration: 0.002 });
 
       const punchLine = (
         line: HTMLElement | undefined,
@@ -604,9 +575,16 @@ export default function HomePage() {
         }
       };
 
-      intro.to(`.${styles.codeBackdrop}`, { opacity: 0.58, duration: 0.55, ease: "power2.out" });
+      intro.to(`.${styles.codeBackdrop}`, {
+        opacity: 0.58,
+        duration: 0.55,
+        ease: "power2.out",
+      });
 
-      punchLine(heroLines[0], heroFlashes[0], { xPercent: -118, rotateZ: -2.5 });
+      punchLine(heroLines[0], heroFlashes[0], {
+        xPercent: -118,
+        rotateZ: -2.5,
+      });
       punchLine(heroLines[1], heroFlashes[1], { xPercent: 118, rotateZ: 2.5 });
       punchLine(heroLines[2], heroFlashes[2], { yPercent: 125, scale: 1.16 });
 
@@ -648,86 +626,98 @@ export default function HomePage() {
         );
       });
 
-      gsap.utils.toArray<HTMLElement>("[data-line-reveal]").forEach((element) => {
-        gsap.fromTo(
-          element,
-          { yPercent: 105 },
-          {
-            yPercent: 0,
-            duration: 1,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 88%",
-              once: true,
+      gsap.utils
+        .toArray<HTMLElement>("[data-line-reveal]")
+        .forEach((element) => {
+          gsap.fromTo(
+            element,
+            { yPercent: 105 },
+            {
+              yPercent: 0,
+              duration: 1,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: element,
+                start: "top 88%",
+                once: true,
+              },
             },
-          },
-        );
-      });
+          );
+        });
 
-      gsap.utils.toArray<HTMLElement>(`.${styles.serviceCard}`).forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 70, rotateX: 7 },
-          {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 0.95,
-            delay: index * 0.04,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 88%",
-              once: true,
+      gsap.utils
+        .toArray<HTMLElement>(`.${styles.serviceCard}`)
+        .forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            { opacity: 0, y: 70, rotateX: 7 },
+            {
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+              duration: 0.95,
+              delay: index * 0.04,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                once: true,
+              },
             },
-          },
-        );
-      });
+          );
+        });
 
-      gsap.utils.toArray<HTMLElement>(`.${styles.projectVisual}`).forEach((visual) => {
-        const placeholder = visual.querySelector(`.${styles.imagePlaceholder}`);
-        if (!placeholder) return;
+      gsap.utils
+        .toArray<HTMLElement>(`.${styles.projectVisual}`)
+        .forEach((visual) => {
+          const placeholder = visual.querySelector(
+            `.${styles.imagePlaceholder}`,
+          );
+          if (!placeholder) return;
 
-        gsap.fromTo(
-          placeholder,
-          { scale: 1.06, yPercent: -4 },
-          {
-            scale: 1,
-            yPercent: 4,
-            ease: "none",
-            scrollTrigger: {
-              trigger: visual,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
+          gsap.fromTo(
+            placeholder,
+            { scale: 1.06, yPercent: -4 },
+            {
+              scale: 1,
+              yPercent: 4,
+              ease: "none",
+              scrollTrigger: {
+                trigger: visual,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              },
             },
-          },
-        );
-      });
+          );
+        });
 
-      gsap.utils.toArray<HTMLElement>(`.${styles.processItem}`).forEach((item) => {
-        const line = item.querySelector(`.${styles.processLineFill}`);
-        if (!line) return;
+      gsap.utils
+        .toArray<HTMLElement>(`.${styles.processItem}`)
+        .forEach((item) => {
+          const line = item.querySelector(`.${styles.processLineFill}`);
+          if (!line) return;
 
-        gsap.fromTo(
-          line,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            transformOrigin: "left center",
-            ease: "none",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
-              end: "bottom 65%",
-              scrub: true,
+          gsap.fromTo(
+            line,
+            { scaleX: 0 },
+            {
+              scaleX: 1,
+              transformOrigin: "left center",
+              ease: "none",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 85%",
+                end: "bottom 65%",
+                scrub: true,
+              },
             },
-          },
-        );
-      });
+          );
+        });
 
-      const statementWords = gsap.utils.toArray<HTMLElement>(`.${styles.statementWord}`);
+      const statementWords = gsap.utils.toArray<HTMLElement>(
+        `.${styles.statementWord}`,
+      );
       gsap.fromTo(
         statementWords,
         { opacity: 0.16 },
@@ -783,26 +773,32 @@ export default function HomePage() {
     if (!element) return;
 
     if (lenisRef.current) {
-      lenisRef.current.scrollTo(element as HTMLElement, { offset: -76, duration: 1.25 });
+      lenisRef.current.scrollTo(element as HTMLElement, {
+        offset: -76,
+        duration: 1.25,
+      });
     } else {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <main ref={rootRef} className={styles.page}>
+    <main ref={rootRef} className={styles.page} data-language={language}>
       <div className={styles.loader} aria-hidden="true">
         <div className={styles.loaderInner}>
           <div className={styles.loaderWord}>
-            <span>JIREH</span>
+            <span>{copy.loader.brandName}</span>
           </div>
+
           <div className={styles.loaderWord}>
-            <span>GRP</span>
+            <span>{copy.loader.brandGroup}</span>
           </div>
+
           <div className={styles.loaderMeta}>
-            <span>Systems that move business</span>
-            <span>Addis Ababa / Africa & Beyond</span>
+            <span>{copy.loader.tagline}</span>
+            <span>{copy.loader.location}</span>
           </div>
+
           <div className={styles.loaderProgress}>
             <div className={styles.loaderProgressBar} />
           </div>
@@ -810,30 +806,55 @@ export default function HomePage() {
       </div>
 
       <header className={styles.header}>
-        <a className={styles.logo} href="#top" onClick={(event) => { event.preventDefault(); scrollTo("#top"); }}>
-          <span className={styles.logoMark}>J</span>
-          <span className={styles.logoText}>
-            JIREH
-            <small>GRP</small>
+        <Link
+          className={styles.logo}
+          href={homeHref}
+          aria-label={
+            language === "am"
+              ? "ወደ ጃይረ ግሩፕ መነሻ ገጽ ይመለሱ"
+              : "Go to the Jireh Group homepage"
+          }
+        >
+          <span className={styles.logoMark}>
+            {language === "am" ? "ጃ" : "J"}
           </span>
-        </a>
+
+          <span className={styles.logoText}>
+            {copy.loader.brandName}
+            <small>{copy.loader.brandGroup}</small>
+          </span>
+        </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
-          <button type="button" onClick={() => scrollTo("#about")}>About</button>
-          <button type="button" onClick={() => scrollTo("#services")}>Services</button>
-          <button type="button" onClick={() => scrollTo("#work")}>Work</button>
-          <button type="button" onClick={() => scrollTo("#approach")}>Approach</button>
+          <button type="button" onClick={() => scrollTo("#about")}>
+            {copy.navigation.about}
+          </button>
+          <button type="button" onClick={() => scrollTo("#services")}>
+            {copy.navigation.services}
+          </button>
+          <button type="button" onClick={() => scrollTo("#work")}>
+            {copy.navigation.work}
+          </button>
+          <button type="button" onClick={() => scrollTo("#approach")}>
+            {copy.navigation.approach}
+          </button>
         </nav>
 
-        <a className={styles.headerCta} href="mailto:hello@jirehgrp.com">
-          Start a project
-          <ArrowUpRight size={16} />
-        </a>
+        <div className={styles.headerActions}>
+          <LanguageToggle language={language} />
+
+          <Link className={styles.headerCta} href={startHref}>
+            <span>{copy.navigation.startProject}</span>
+            <ArrowUpRight size={16} />
+          </Link>
+        </div>
 
         <button
           className={styles.menuButton}
           type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-label={
+            menuOpen ? copy.navigation.closeMenu : copy.navigation.openMenu
+          }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
@@ -841,23 +862,22 @@ export default function HomePage() {
         </button>
       </header>
 
-      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}>
+      <div
+        className={`${styles.mobileMenu} ${
+          menuOpen ? styles.mobileMenuOpen : ""
+        }`}
+      >
         <div className={styles.mobileMenuInner}>
-          {[
-            ["About", "#about"],
-            ["Services", "#services"],
-            ["Work", "#work"],
-            ["Approach", "#approach"],
-            ["Contact", "#contact"],
-          ].map(([label, href], index) => (
+          {mobileNavigation.map(([label, href], index) => (
             <button key={href} type="button" onClick={() => scrollTo(href)}>
               <span>0{index + 1}</span>
               {label}
               <ArrowUpRight size={22} />
             </button>
           ))}
+
           <div className={styles.mobileMenuFooter}>
-            <span>Addis Ababa</span>
+            <LanguageToggle language={language} variant="dark" />
             <a href="mailto:hello@jirehgrp.com">hello@jirehgrp.com</a>
           </div>
         </div>
@@ -869,37 +889,35 @@ export default function HomePage() {
         <div className={styles.heroNoise} aria-hidden="true" />
 
         <div className={styles.heroTopline}>
-          <span>Enterprise software studio</span>
+          <span>{copy.hero.studio}</span>
           <span className={styles.heroToplineCenter}>
-            <i /> Addis Ababa
+            <i /> {copy.hero.location}
           </span>
-          <span>ERP / Platforms / Software</span>
+          <span>{copy.hero.category}</span>
         </div>
 
         <div className={styles.heroContent}>
           <div className={styles.heroCopy}>
             <div className={styles.heroTitle}>
               <div className={styles.heroLineMask}>
-                <h1 data-hero-reveal>WE BUILD THE</h1>
+                <h1 data-hero-reveal>{copy.hero.line1}</h1>
                 <span className={styles.heroLineFlash} aria-hidden="true" />
               </div>
               <div className={styles.heroLineMask}>
-                <h1 data-hero-reveal>SYSTEMS</h1>
+                <h1 data-hero-reveal>{copy.hero.line2}</h1>
                 <span className={styles.heroLineFlash} aria-hidden="true" />
               </div>
-              <div className={`${styles.heroLineMask} ${styles.heroLineAccent}`}>
-                <h1 data-hero-reveal>BUSINESS RUNS ON.</h1>
+              <div
+                className={`${styles.heroLineMask} ${styles.heroLineAccent}`}
+              >
+                <h1 data-hero-reveal>{copy.hero.line3}</h1>
                 <span className={styles.heroLineFlash} aria-hidden="true" />
               </div>
             </div>
 
             <div className={styles.heroMeta}>
-              <p>
-                Jirehgrp designs ERP solutions, internal business platforms,
-                and custom software that help companies operate with clarity,
-                move faster, and grow with confidence.
-              </p>
-              <ArrowLink href="#contact">Build with us</ArrowLink>
+              <p>{copy.hero.description}</p>
+              <ArrowLink href="#contact">{copy.hero.cta}</ArrowLink>
             </div>
           </div>
 
@@ -909,7 +927,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.scrollIndicator}>
-          <span>Scroll to explore</span>
+          <span>{copy.hero.scroll}</span>
           <span className={styles.scrollLine}>
             <ArrowDown size={16} />
           </span>
@@ -919,29 +937,27 @@ export default function HomePage() {
       <section className={styles.statement}>
         <div className={styles.sectionLabel} data-reveal>
           <span>01</span>
-          <span>Our point of view</span>
+          <span>{copy.statement.label}</span>
         </div>
 
         <p className={styles.statementText}>
-          {"The best software does not add another layer of complexity. It removes friction, connects the operation, and gives every decision a clearer foundation."
-            .split(" ")
-            .map((word, index) => (
-              <span className={styles.statementWord} key={`${word}-${index}`}>
-                {word}{" "}
-              </span>
-            ))}
+          {copy.statement.text.split(" ").map((word, index) => (
+            <span className={styles.statementWord} key={`${word}-${index}`}>
+              {word}{" "}
+            </span>
+          ))}
         </p>
 
         <div className={styles.statementFoot} data-reveal>
-          <span>From fragmented workflows</span>
+          <span>{copy.statement.from}</span>
           <MoveRight size={24} strokeWidth={1.4} />
-          <span>to one connected system</span>
+          <span>{copy.statement.to}</span>
         </div>
       </section>
 
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
-          {[...capabilityWords, ...capabilityWords].map((word, index) => (
+          {[...copy.marquee, ...copy.marquee].map((word, index) => (
             <div className={styles.marqueeItem} key={`${word}-${index}`}>
               <span>{word}</span>
               <i />
@@ -954,15 +970,15 @@ export default function HomePage() {
         <div className={styles.aboutIntro}>
           <div className={styles.sectionLabel} data-reveal>
             <span>02</span>
-            <span>Who we are</span>
+            <span>{copy.about.label}</span>
           </div>
 
           <div className={styles.aboutHeading}>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>ENGINEERING WITH</h2>
+              <h2 data-line-reveal>{copy.about.heading1}</h2>
             </div>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>BUSINESS CONTEXT.</h2>
+              <h2 data-line-reveal>{copy.about.heading2}</h2>
             </div>
           </div>
         </div>
@@ -971,21 +987,14 @@ export default function HomePage() {
           <LaptopCodeVisual />
 
           <div className={styles.aboutLead} data-reveal>
-            <p className={styles.aboutLeadStatement}>
-              Jireh Group builds digital systems that replace disconnected work
-              with clear, dependable operations.
-            </p>
-            <p className={styles.aboutLeadDetail}>
-              We bring business understanding, product thinking, and engineering
-              into one team—mapping the operation, designing the system behind it,
-              and staying close as it becomes part of how the company runs.
-            </p>
+            <p className={styles.aboutLeadStatement}>{copy.about.statement}</p>
+            <p className={styles.aboutLeadDetail}>{copy.about.detail}</p>
           </div>
         </div>
 
         <div className={styles.aboutBody}>
           <div className={styles.factGrid}>
-            {companyFacts.map((fact, index) => (
+            {copy.about.facts.map((fact, index) => (
               <article className={styles.factCard} data-reveal key={fact.value}>
                 <span>0{index + 1}</span>
                 <strong>{fact.value}</strong>
@@ -996,11 +1005,11 @@ export default function HomePage() {
 
           <div className={styles.technology} data-reveal>
             <div className={styles.technologyHeader}>
-              <span>Technology layer</span>
-              <span>Chosen for the system—not for the trend</span>
+              <span>{copy.about.technologyLabel}</span>
+              <span>{copy.about.technologyNote}</span>
             </div>
             <div className={styles.technologyList}>
-              {technologyStack.map((technology) => (
+              {copy.about.technologies.map((technology) => (
                 <span key={technology}>{technology}</span>
               ))}
             </div>
@@ -1012,31 +1021,31 @@ export default function HomePage() {
         <div className={styles.servicesIntro}>
           <div className={styles.sectionLabel} data-reveal>
             <span>03</span>
-            <span>What we build</span>
+            <span>{copy.services.label}</span>
           </div>
 
           <div className={styles.servicesIntroSticky}>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>ONE PARTNER.</h2>
+              <h2 data-line-reveal>{copy.services.heading1}</h2>
             </div>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>THE WHOLE SYSTEM.</h2>
+              <h2 data-line-reveal>{copy.services.heading2}</h2>
             </div>
-            <p data-reveal>
-              Strategy, product thinking, engineering, and long-term evolution —
-              connected from the first operational question to the final release.
-            </p>
-            <ArrowLink href="#contact">Discuss your system</ArrowLink>
+            <p data-reveal>{copy.services.description}</p>
+            <ArrowLink href="#contact">{copy.services.cta}</ArrowLink>
           </div>
         </div>
 
         <div className={styles.serviceList}>
-          {services.map((service) => {
-            const Icon = service.icon;
+          {copy.services.items.map((service, index) => {
+            const Icon = serviceIcons[index];
+
             return (
-              <article className={styles.serviceCard} key={service.number}>
+              <article className={styles.serviceCard} key={service.title}>
                 <div className={styles.serviceCardTop}>
-                  <span className={styles.serviceNumber}>{service.number}</span>
+                  <span className={styles.serviceNumber}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <span className={styles.serviceIcon}>
                     <Icon size={24} strokeWidth={1.35} />
                   </span>
@@ -1051,7 +1060,11 @@ export default function HomePage() {
                     </span>
                   ))}
                 </div>
-                <ArrowRight className={styles.serviceArrow} size={24} strokeWidth={1.4} />
+                <ArrowRight
+                  className={styles.serviceArrow}
+                  size={24}
+                  strokeWidth={1.4}
+                />
               </article>
             );
           })}
@@ -1062,44 +1075,53 @@ export default function HomePage() {
         <div className={styles.workHeading}>
           <div className={styles.sectionLabel} data-reveal>
             <span>04</span>
-            <span>Selected systems</span>
+            <span>{copy.work.label}</span>
           </div>
 
           <div>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>BUILT FOR THE</h2>
+              <h2 data-line-reveal>{copy.work.heading1}</h2>
             </div>
             <div className={`${styles.lineMask} ${styles.workHeadingOffset}`}>
-              <h2 data-line-reveal>REAL OPERATION.</h2>
+              <h2 data-line-reveal>{copy.work.heading2}</h2>
             </div>
           </div>
         </div>
 
         <div className={styles.projectList}>
-          {projects.map((project) => (
-            <article className={styles.project} key={project.number}>
-              <div className={styles.projectVisual} data-reveal>
-                <ImagePlaceholder label={project.imageLabel} index={project.number} />
-              </div>
-              <div className={styles.projectInfo} data-reveal>
-                <div className={styles.projectMeta}>
-                  <span>{project.number}</span>
-                  <span>{project.type}</span>
+          {copy.work.projects.map((project, index) => {
+            const number = String(index + 1).padStart(2, "0");
+
+            return (
+              <article className={styles.project} key={project.title}>
+                <div className={styles.projectVisual} data-reveal>
+                  <ImagePlaceholder
+                    label={project.imageLabel}
+                    index={number}
+                    recommendedLabel={copy.work.recommended}
+                  />
                 </div>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <div className={styles.projectTags}>
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+
+                <div className={styles.projectInfo} data-reveal>
+                  <div className={styles.projectMeta}>
+                    <span>{number}</span>
+                    <span>{project.type}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.summary}</p>
+                  <div className={styles.projectTags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <button type="button" className={styles.projectLink}>
+                    {copy.work.viewSystem}
+                    <ArrowUpRight size={18} />
+                  </button>
                 </div>
-                <button type="button" className={styles.projectLink}>
-                  View system
-                  <ArrowUpRight size={18} />
-                </button>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -1107,38 +1129,26 @@ export default function HomePage() {
         <div className={styles.outcomesHeader}>
           <div className={styles.sectionLabel} data-reveal>
             <span>05</span>
-            <span>What changes</span>
+            <span>{copy.outcomes.label}</span>
           </div>
-          <p data-reveal>
-            Not software for the sake of software. A stronger way to run the business.
-          </p>
+          <p data-reveal>{copy.outcomes.introduction}</p>
         </div>
 
         <div className={styles.outcomeGrid}>
-          <div className={styles.outcomeCard} data-reveal>
-            <span className={styles.outcomeIndex}>A</span>
-            <strong>ONE</strong>
-            <h3>Source of truth</h3>
-            <p>Everyone works from the same reliable operational picture.</p>
-          </div>
-          <div className={styles.outcomeCard} data-reveal>
-            <span className={styles.outcomeIndex}>B</span>
-            <strong>FEWER</strong>
-            <h3>Manual handoffs</h3>
-            <p>Routine work moves through the system instead of through memory.</p>
-          </div>
-          <div className={styles.outcomeCard} data-reveal>
-            <span className={styles.outcomeIndex}>C</span>
-            <strong>FASTER</strong>
-            <h3>Decisions</h3>
-            <p>Leaders see what matters without waiting for another report.</p>
-          </div>
-          <div className={styles.outcomeCard} data-reveal>
-            <span className={styles.outcomeIndex}>D</span>
-            <strong>READY</strong>
-            <h3>For growth</h3>
-            <p>The operational foundation scales as teams, branches, and complexity grow.</p>
-          </div>
+          {copy.outcomes.items.map((item, index) => (
+            <article
+              className={styles.outcomeCard}
+              data-reveal
+              key={item.title}
+            >
+              <span className={styles.outcomeIndex}>
+                {String.fromCharCode(65 + index)}
+              </span>
+              <strong>{item.value}</strong>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -1146,32 +1156,30 @@ export default function HomePage() {
         <div className={styles.approachIntro}>
           <div className={styles.sectionLabel} data-reveal>
             <span>06</span>
-            <span>How we work</span>
+            <span>{copy.approach.label}</span>
           </div>
           <div className={styles.approachHeading}>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>CLARITY BEFORE</h2>
+              <h2 data-line-reveal>{copy.approach.heading1}</h2>
             </div>
             <div className={styles.lineMask}>
-              <h2 data-line-reveal>COMPLEXITY.</h2>
+              <h2 data-line-reveal>{copy.approach.heading2}</h2>
             </div>
           </div>
-          <p data-reveal>
-            We do not begin with a feature list. We begin with the business:
-            what is happening, what is slowing it down, and what the right system
-            must make possible.
-          </p>
+          <p data-reveal>{copy.approach.description}</p>
         </div>
 
         <div className={styles.processList}>
-          {process.map((step) => (
-            <article className={styles.processItem} key={step.number}>
+          {copy.approach.steps.map((item, index) => (
+            <article className={styles.processItem} key={item.title}>
               <div className={styles.processLine}>
                 <span className={styles.processLineFill} />
               </div>
-              <span className={styles.processNumber}>{step.number}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
+              <span className={styles.processNumber}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
             </article>
           ))}
         </div>
@@ -1182,67 +1190,80 @@ export default function HomePage() {
         <div className={styles.contactTop}>
           <div className={styles.sectionLabel} data-reveal>
             <span>07</span>
-            <span>Start a conversation</span>
+            <span>{copy.contact.label}</span>
           </div>
           <span className={styles.contactAvailability} data-reveal>
-            <i /> Open to ambitious projects
+            <i /> {copy.contact.availability}
           </span>
         </div>
 
         <div className={styles.contactHeading}>
           <div className={styles.lineMask}>
-            <h2 data-line-reveal>YOUR BUSINESS HAS</h2>
+            <h2 data-line-reveal>{copy.contact.heading1}</h2>
           </div>
           <div className={styles.lineMask}>
-            <h2 data-line-reveal>A NEXT SYSTEM.</h2>
+            <h2 data-line-reveal>{copy.contact.heading2}</h2>
           </div>
           <div className={`${styles.lineMask} ${styles.contactAccent}`}>
-            <h2 data-line-reveal>LET&apos;S BUILD IT.</h2>
+            <h2 data-line-reveal>{copy.contact.heading3}</h2>
           </div>
         </div>
 
         <div className={styles.contactBottom} data-reveal>
-          <p>
-            Tell us what is difficult, disconnected, or ready to scale. We&apos;ll
-            help identify the right next step.
-          </p>
-          <a className={styles.contactButton} href="mailto:hello@jirehgrp.com">
-            <span>hello@jirehgrp.com</span>
+          <p>{copy.contact.description}</p>
+          <Link className={styles.contactButton} href={startHref}>
+            <span>{copy.contact.cta}</span>
             <span className={styles.contactButtonIcon}>
               <ArrowUpRight size={28} strokeWidth={1.35} />
             </span>
-          </a>
+          </Link>
         </div>
       </section>
 
       <footer className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <span className={styles.footerLogoMark}>J</span>
+        <Link
+          className={styles.footerBrand}
+          href={homeHref}
+          aria-label={
+            language === "am"
+              ? "ወደ ጃይረ ግሩፕ መነሻ ገጽ ይመለሱ"
+              : "Go to the Jireh Group homepage"
+          }
+        >
+          <span className={styles.footerLogoMark}>
+            {language === "am" ? "ጃ" : "J"}
+          </span>
+
           <div>
-            <strong>JIREHGRP</strong>
-            <span>Systems that move business.</span>
+            <strong>
+              {copy.loader.brandName} {copy.loader.brandGroup}
+            </strong>
+
+            <span>{copy.footer.tagline}</span>
           </div>
-        </div>
+        </Link>
 
         <div className={styles.footerContacts}>
           <div>
-            <span>General</span>
+            <span>{copy.footer.general}</span>
             <a href="mailto:hello@jirehgrp.com">hello@jirehgrp.com</a>
           </div>
           <div>
-            <span>Sales</span>
+            <span>{copy.footer.sales}</span>
             <a href="mailto:sales@jirehgrp.com">sales@jirehgrp.com</a>
           </div>
           <div>
-            <span>Support</span>
+            <span>{copy.footer.support}</span>
             <a href="mailto:support@jirehgrp.com">support@jirehgrp.com</a>
           </div>
         </div>
 
         <div className={styles.footerBottom}>
-          <span>© 2026 Jirehgrp</span>
-          <span>Addis Ababa · Africa & Beyond</span>
-          <button type="button" onClick={() => scrollTo("#top")}>Back to top ↑</button>
+          <span>© 2026 {language === "am" ? "ጃይረ ግሩፕ" : "Jirehgrp"}</span>
+          <span>{copy.footer.location}</span>
+          <button type="button" onClick={() => scrollTo("#top")}>
+            {copy.footer.backToTop}
+          </button>
         </div>
       </footer>
     </main>

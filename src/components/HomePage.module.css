@@ -1,4 +1,4 @@
-/* @/page.module.css */
+/* @/components/HomePage.module.css */
 
 :global(*) {
   box-sizing: border-box;
@@ -46,10 +46,6 @@
   background: var(--ink);
   color: var(--paper);
   font-family: var(--sans);
-}
-
-.page a,
-.page button {
 }
 
 .loader {
@@ -120,6 +116,14 @@
   border-bottom: 1px solid rgba(243, 241, 233, 0.1);
   background: rgba(10, 11, 11, 0.78);
   backdrop-filter: blur(18px);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.7rem;
+  min-width: 0;
 }
 
 .logo {
@@ -1948,7 +1952,19 @@
 .footerBrand {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footerBrand:hover .footerLogoMark {
+  background: #c7ff65;
+}
+
+.page[data-language="am"] .logoText,
+.page[data-language="am"] .footerBrand strong {
+  font-family: var(--font-entoto), sans-serif;
+  letter-spacing: 0;
 }
 
 .footerBrand > div {
@@ -2078,9 +2094,14 @@
   }
 
   .header {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.65rem;
     min-height: 70px;
     padding: 0 4vw;
+  }
+
+  .headerActions {
+    gap: 0;
   }
 
   .menuButton {
@@ -2542,4 +2563,109 @@
   .codeScanner {
     display: none;
   }
+}
+
+
+/* Multilingual typography */
+.page[data-language="am"] {
+  --display: var(--font-entoto), sans-serif;
+  --sans: var(--font-entoto), sans-serif;
+
+  font-family:
+    var(--font-entoto),
+    sans-serif;
+}
+
+.page[data-language="am"] h1,
+.page[data-language="am"] h2,
+.page[data-language="am"] h3,
+.page[data-language="am"] .loaderWord,
+.page[data-language="am"] .mobileMenuInner > button,
+.page[data-language="am"] .contactButton {
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  text-transform: none;
+}
+
+.page[data-language="am"] .heroTitle h1 {
+  font-size: clamp(3.1rem, 7.4vw, 7.8rem);
+  line-height: 1.05;
+}
+
+.page[data-language="am"] .aboutHeading h2,
+.page[data-language="am"] .servicesIntro h2,
+.page[data-language="am"] .workHeading h2,
+.page[data-language="am"] .approachHeading h2 {
+  font-size: clamp(3rem, 5.6vw, 6.4rem);
+  line-height: 1.08;
+}
+
+.page[data-language="am"] .contactHeading h2 {
+  font-size: clamp(3.2rem, 7vw, 8rem);
+  line-height: 1.08;
+}
+
+.page[data-language="am"] .statementText {
+  font-size: clamp(2.7rem, 5.1vw, 5.8rem);
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  text-transform: none;
+}
+
+.page[data-language="am"] .serviceCard h3,
+.page[data-language="am"] .projectInfo h3,
+.page[data-language="am"] .outcomeCard h3,
+.page[data-language="am"] .processItem h3,
+.page[data-language="am"] .factCard strong {
+  letter-spacing: -0.02em;
+  line-height: 1.16;
+  text-transform: none;
+}
+
+.page[data-language="am"] .desktopNav button,
+.page[data-language="am"] .sectionLabel,
+.page[data-language="am"] .heroTopline,
+.page[data-language="am"] .contactAvailability,
+.page[data-language="am"] .footerBottom,
+.page[data-language="am"] .footerContacts span {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 900px) {
+  .headerActions :global(.language-toggle) {
+    min-height: 36px;
+    padding-inline: 0.6rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .headerActions :global(.language-toggle) {
+    min-width: 42px;
+    padding-inline: 0.45rem;
+    font-size: 0.58rem;
+  }
+
+  .page[data-language="am"] .heroTitle h1 {
+    font-size: clamp(2.8rem, 12.5vw, 5.2rem);
+  }
+
+  .page[data-language="am"] .statementText {
+    font-size: clamp(2.15rem, 9.4vw, 3.5rem);
+  }
+}
+
+.page[data-language="am"] .loaderWord {
+  font-family: var(--font-entoto), sans-serif;
+  letter-spacing: 0;
+}
+
+.page[data-language="am"] .loaderWord span {
+  font-family: var(--font-entoto), sans-serif;
+  line-height: 1.05;
+}
+
+.page[data-language="am"] .loaderMeta {
+  font-family: var(--font-entoto), sans-serif;
+  letter-spacing: 0;
 }

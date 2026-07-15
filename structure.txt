@@ -1,0 +1,49 @@
+jirehgrp/
+├── public/
+│   ├── fonts/
+│   │   └── entoto.ttf
+│   ├── favicon.ico
+│   └── logo.png
+├── src/
+│   ├── app/
+│   │   ├── (am)/
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── (en)/
+│   │   │   ├── start/
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── start.module.css
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   └── start-project/
+│   │   │       └── route.ts
+│   │   ├── globals.css
+│   │   ├── manifest.ts
+│   │   ├── opengraph-image.tsx
+│   │   ├── robots.ts
+│   │   └── sitemap.ts
+│   ├── components/
+│   │   ├── providers/
+│   │   │   └── SitePreferencesProvider.tsx
+│   │   ├── HomePage.module.css
+│   │   ├── HomePage.tsx
+│   │   ├── LanguageToggle.tsx
+│   │   ├── OrganizationJsonLd.tsx
+│   │   └── StartProjectForm.tsx
+│   ├── content/
+│   │   └── home.ts
+│   └── lib/
+│       ├── fonts.ts
+│       └── site.ts
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+└── tsconfig.json
