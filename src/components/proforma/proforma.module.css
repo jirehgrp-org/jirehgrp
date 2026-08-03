@@ -57,9 +57,10 @@
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }
+
   .previewCol {
     position: static;
-    order: -1;
+    order: initial;
   }
 }
 
